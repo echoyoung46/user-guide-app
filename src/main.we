@@ -1,0 +1,44 @@
+<we-element name="foo">
+  <template>
+    <div class="appearDiv" onviewappear="viewappear" onviewdisappear="viewdisappear">
+      <text>{{title}}</text>
+      <text onclick="test">Click</text>
+      <text>{{title}}</text>
+    </div>
+  </template>
+  <script>
+    module.exports = {
+      data: {
+        title: 'Toto',
+        imageUrl: 'images/toto.jpg'
+      },
+      methods: {
+        test: function () {
+          this.$dispatch('notify', {a: 1})
+        }
+      }
+    }
+  </script>
+</we-element>
+
+<template>
+  <div>
+    <navigator></navigator>
+    <menu></menu>
+  </div>
+</template>
+
+<style>
+
+</style>
+
+<script>
+    module.exports = {
+      created: function() {
+        var self = this;
+        this.$on('toggleMenu', function(e) {
+          self.$broadcast('toggleMenu', e.ison)
+        })
+      }
+    }
+</script>

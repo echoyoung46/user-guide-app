@@ -1,0 +1,43 @@
+<template>
+  <div class="nav_bar">
+    <image class="menu-icon" src="{{menuIcon}}" onclick="toggleMenu"></image>
+    <text class="menu-title">{{title}}</text>
+    <text></text>
+  </div>
+</template>
+
+<style>
+.nav_bar {
+  background-color: #fafbfb;
+  height: 100px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items:center;
+}
+.menu-icon{
+  width: 50px;
+  height: 50px;
+  margin-left: 30px;
+}
+.menu-title{
+  color: #4b4b4b;
+  /*text-align: center;*/
+  /*margin: 0 auto;*/
+}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      title: '用户指南',
+      menuIcon: '/src/images/icon-menu.svg',
+      ison: false
+    },
+    methods: {
+      toggleMenu: function() {
+        this.ison = !this.ison;
+        this.$dispatch('toggleMenu', {ison: this.ison});
+      }
+    }
+  }
+</script>
