@@ -34,10 +34,13 @@
 
 <script>
     module.exports = {
+      data: {
+        count: 0
+      },
       created: function() {
         var self = this;
         this.$on('toggleMenu', function(e) {
-          self.$broadcast('toggleMenu', e.ison)
+          self.$broadcast('controlMenu', e.detail);
         })
       }
     }

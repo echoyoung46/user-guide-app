@@ -1,10 +1,12 @@
 <template>
-  <div class="menu-list">
-    <div repeat="{{menu}}">
-      <text class="menu-item">{{title}}</text>
-      <div class="submenu-list">
-        <div repeat="{{submenu}}">
-          <text class="submenu-item">{{subtitle}}</text>
+  <div class="container">
+    <div class="menulist block" id="menulist">
+      <div repeat="{{menu}}">
+        <text class="menu-item">{{title}}</text>
+        <div class="submenulist">
+          <div repeat="{{submenu}}">
+            <text class="submenu-item">{{subtitle}}</text>
+          </div>
         </div>
       </div>
     </div>
@@ -12,18 +14,49 @@
 </template>
 
 <style>
+  .container{
+    width: 100%;
+    height: 100%;
+    background: #000;
+    /*opacity: .5;*/
+  }
+  .menulist{
+    width: 400;
+    height: 100%;
+    background: #99CCFF;
+    color: #333;
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    align-items: center;
+    justify-content: center;
+  }
   .menu-item{
     font-size: 30px;
+    line-height: 30px;
   }
   .submenu-item{
     font-size: 20px;
+    line-height: 20px;
+  }
+  .block {
+    /*position: absolute;
+    width: 250px;
+    height: 250px;
+    top: 100px;
+    left: 0px;
+    background-color: #F0AD4E;
+    align-items: center;
+    justify-content: center;*/
   }
 </style>
 
 <script>
   module.exports = {
     data: {
+      transformOrigin: 'center center',
       title: 'test',
+      shown: false,
       menu: [
         {title: '相机', submenu: [
           {subtitle: '相机概览', content: '使用 iPhone，您可以拍摄静止照片和高清视频。一共有两个相机：除了 iPhone 背面的 iSight 摄像头之外，正面还有用于 FaceTime 通话和自拍的摄像头。'},
@@ -42,6 +75,42 @@
           {subtitle: 'iCloud 照片共享', content: '使用“iCloud 照片共享”，您可以创建用于共享的照片和视频相簿，并订阅其他人共享的相簿。'},
         ]}
       ]
+    },
+    methods: {
+      anim: function(styles, timingFunction, duration, callback) {
+        console.log(this);
+        this.$call('animation', 'transition', this._ids.menulist.el.ref, {
+          styles: styles,
+          timingFunction: timingFunction,
+          duration: duration
+        }, callback);
+      },
+      translate: function(_step) {
+        this.current_translate = _step ? _step : 'translate(-100%, 0)';
+        this.anim({
+          transform: this.current_translate
+        }, 'linear', 300, function() {
+        });
+      }
+    },
+    created: function() {
+      console.log('menu created');
+      this.$on('controlMenu', function(e) {
+        this.shown = e.detail.ison;
+        if (this.shown) {
+          this.translate('translate(0, 0)');
+        }else {
+          this.translate('translate(-100%, 0)');
+        }
+      });
+    },
+    ready: function() {
+      this.current_translate = this.current_translate ? '' : 'translate(-100%, 0)';
+      console.log(this.current_translate);
+      this.anim({
+        transform: this.current_translate
+      }, 'ease-in', 500, function() {
+      });
     }
   }
 </script>

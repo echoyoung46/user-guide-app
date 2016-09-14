@@ -19,6 +19,7 @@
     "weex-loader": "^0.1.5"
   },
   "dependencies": {
-    "weex-components": "^0.2.0"
+    "weex-components": "^0.2.0",
+    "animationjs": "^0.1.5"
   }
 }
