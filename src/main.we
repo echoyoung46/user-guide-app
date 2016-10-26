@@ -22,26 +22,59 @@
 </we-element>
 
 <template>
-  <div>
-    <navigator></navigator>
-    <menu></menu>
+  <div class="app-container" onclick="topClick">
+    <navigator class="app-navigator"></navigator>
+    <menu class="app-menu"></menu>
   </div>
 </template>
 
 <style>
-
+  .app-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .app-navigator{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  .app-menu{
+    justify-content: flex-start;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+  }
 </style>
 
 <script>
     module.exports = {
       data: {
-        count: 0
+        count: 0,
+        ison: false
       },
       created: function() {
         var self = this;
         this.$on('toggleMenu', function(e) {
-          self.$broadcast('controlMenu', e.detail);
+          this.ison = !this.ison;
+          self.$broadcast('controlMenu', {ison: this.ison});
         })
+      },
+      methods: {
+        topClick: function(){
+          if( this.ison ) {
+            this.ison = !this.ison;
+            var self = this;
+            self.$broadcast('controlMenu', {ison: this.ison});
+          }
+        }
       }
     }
 </script>

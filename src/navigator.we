@@ -30,13 +30,11 @@
   module.exports = {
     data: {
       title: '用户指南',
-      menuIcon: '/src/images/icon-menu.svg',
-      ison: false
+      menuIcon: '/src/images/icon-menu.svg'
     },
     methods: {
       toggleMenu: function() {
-        this.ison = !this.ison;
-        this.$dispatch('toggleMenu', {ison: this.ison});
+        this.$dispatch('toggleMenu');
       }
     }
   }
