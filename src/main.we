@@ -22,35 +22,39 @@
 </we-element>
 
 <template>
-  <div class="app-container" onclick="topClick">
-    <navigator class="app-navigator"></navigator>
-    <menu class="app-menu"></menu>
+  <div class="app-container default-position" onclick="topClick">
+    <div class="app-content default-position">
+      <!--<navigator class="app-navigator"></navigator>-->
+      <menu class="app-menu"></menu>
+    </div>
   </div>
 </template>
 
 <style>
-  .app-container{
+  .default-position{
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+  }
+  .app-container{
+    background: url(src/images/bg.jpg) no-repeat center;
+    background-size: cover;
+  }
+  .app-content{
+    background: #fff;
+    opacity: 0.5;
   }
   .app-navigator{
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
   }
   .app-menu{
-    justify-content: flex-start;
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 1;
+    top: 150;
+    bottom: 30;
+    left: 30;
+    right: 120;
   }
 </style>
 

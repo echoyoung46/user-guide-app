@@ -1,13 +1,15 @@
 <template>
-  <div class="menulist block" id="menulist" onclick="default">
-    <div repeat="{{menu}}">
-      <text class="menu-item" onclick="clickTitle">{{title}}</text>
+  <div class="menulist" id="menulist" onclick="default">
+    <cell class="cell" repeat="{{menu}}">
+        <span class="menu-icon"></span>
+        <text class="menu-name">{{title}}</text>
+      <!--<text class="menu-item" onclick="clickTitle">{{title}}</text>
       <div class="submenulist">
         <div repeat="{{submenu}}">
           <text class="submenu-item" onclick="clickItem">{{subtitle}}</text>
         </div>
-      </div>
-    </div>
+      </div>-->
+    </cell>
   </div>
 </template>
 
@@ -18,12 +20,15 @@
     /*opacity: .5;*/
   }
   .menulist{
-    width: 500px;
-    background: #99CCFF;
-    color: #333;
-    /*position: absolute;
-    top: 0px;
-    left: 0px;*/
+    color: #000;
+  }
+  .cell{
+    flex: 1;
+    flex-direction: column;
+    background: #333;
+    margin-bottom: 20;
+    width: 200;
+    float: left;
   }
   .menu-item{
     font-size: 50px;
@@ -35,15 +40,18 @@
     line-height: 50px;
     padding-left: 20px;
   }
-  .block {
-    /*position: absolute;
-    width: 250px;
-    height: 250px;
-    top: 100px;
-    left: 0px;
-    background-color: #F0AD4E;
-    align-items: center;
-    justify-content: center;*/
+  .menu-box{
+    flex: 1;
+    color: #fff;
+  }
+  .menu-box{
+    flex-direction: column;
+    background-color: #ffffff;
+    margin: 5;
+    padding: 10;
+    border-width: 1;
+    border-color: #cccccc;
+    overflow: visible;
   }
 </style>
 
@@ -54,22 +62,18 @@
       title: 'test',
       shown: false,
       menu: [
-        {title: '相机', submenu: [
-          {subtitle: '相机概览', content: '使用 iPhone，您可以拍摄静止照片和高清视频。一共有两个相机：除了 iPhone 背面的 iSight 摄像头之外，正面还有用于 FaceTime 通话和自拍的摄像头。'},
-          {subtitle: '拍照和录像', content: '相机提供了多种照片和视频拍摄模式，可让您拍摄静止照片、方形格式照片、全景照片、延时摄影、视频和慢动作视频（iPhone 5s 或新款机型）。'},
-          {subtitle: 'HDR', content: 'HDR（“高动态范围”）在高对比度的情况下也可帮助您拍摄好照片。iPhone 以不同的曝光设置快速连续地拍摄多张照片并进行合成。合成后的照片在亮度和中间调区域有着更好的细节表现。'},
-        ]},
-        {title: '音乐', submenu: [
-          {subtitle: '音乐概览', content: '使用“音乐”来欣赏储存在 iPhone 上的音乐以及互联网流化音乐，包括实时全球电台 Beats 1。有了 Apple Music 会员资格，您便可以聆听数百万个音轨并获得您所喜爱表演者的最新动态。'},
-          {subtitle: 'Apple Music', content: '成为 Apple Music 会员，您便可以无限制地聆听大量人工精选的无广告广播电台以及创建个人电台。您还可以流化和离线播放数百万首歌曲、接收音乐专家和表演者的音乐推荐、与好友共享播放列表，以及欣赏表演者直接发布的内容。'},
-          {subtitle: '播放音乐', content: '控制回放： 轻按歌曲来播放并显示“迷你播放程序”。轻按“迷你播放程序”来显示“正在播放”屏幕，您可从中进行以下控制。'},
-          {subtitle: 'Siri 和语音控制', content: '您可以使用 Siri 或者“语音控制”来控制音乐回放。请参阅提出请求和语音控制。'}
-        ]},
-        {title: '照片', submenu: [
-          {subtitle: '观看照片和视频', content: '查看照片和视频时，轻按以显示和隐藏控制。左右轻扫以向前或向后。'},
-          {subtitle: '我的照片流', content: '“我的照片流”默认为打开状态，会自动将新照片和视频上传到其他使用“我的照片流”的设备上。'},
-          {subtitle: 'iCloud 照片共享', content: '使用“iCloud 照片共享”，您可以创建用于共享的照片和视频相簿，并订阅其他人共享的相簿。'},
-        ]}
+        [
+          {title: '基本功能', icon: ''},
+          {title: '电话', icon: ''}
+        ],
+        [
+          {title: '音乐', icon: ''},
+          {title: '相机', icon: ''}
+        ],
+        [
+          {title: '微信', icon: ''},
+          {title: '支付宝', icon: ''}
+        ]
       ]
     },
     methods: {
@@ -108,11 +112,11 @@
       });
     },
     ready: function() {
-      this.current_translate = this.current_translate ? '' : 'translate(-100%, 0)';
-      this.anim({
-        transform: this.current_translate
-      }, 'ease-in', 500, function() {
-      });
+      //this.current_translate = this.current_translate ? '' : 'translate(-100%, 0)';
+      //this.anim({
+        //transform: this.current_translate
+      //}, 'ease-in', 500, function() {
+      //});
     }
   }
 </script>
