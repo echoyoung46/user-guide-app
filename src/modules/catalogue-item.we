@@ -1,0 +1,52 @@
+<template>
+  <cell class="catalogue-item" id="{{id}}" onclick="{{redirect}}">
+    <text class="catalogue-name">{{title}}</text>
+  </cell>
+</template>
+
+<style>
+  .catalogue-item{
+    width: 750;
+    height: 100;
+    line-height: 100;
+    border-bottom: 1px solid #fff;
+    background: rgba(255, 255, 255, 0.6);
+    color: #333;
+  }
+  .catalogue-name{
+    padding-left: 30;
+  }
+</style>
+
+<script>
+  require('weex-components');
+  var navigator = require('@weex-module/navigator');
+  var apis = require('../common/api');
+
+  module.exports = {
+    data: {
+      id: '',
+      baseURL: '',
+    },
+    created: function () {
+      var self = this;
+
+      var bundleUrl = this.$getConfig().bundleUrl;
+      this.baseURL = apis.getBaseUrl(bundleUrl,true);
+
+    },
+    methods: {
+      redirect: function() {
+        var itemid = this.id;
+        
+        var params = {
+          'url': this.baseURL + 'modules/guide-detail.js?id=' + itemid,
+          'animated': 'true'
+        };
+        navigator.push(params, function (e) {
+          //callback
+        });
+      }
+    }
+  }
+</script>

@@ -1,0 +1,84 @@
+<template>
+  <div class="catalogue-container">
+    <wxc-navpage data-role="none" background-color="#fafbfb" title="首页" title-color="#333" left-item-src="/src/images/back-icon.svg" left-item-color="white"></wxc-navpage>
+    <scroller id="catalogue-list" style="position:absolute;top:88;height:0;overflow:hidden;">
+      <catalogue-item id="{{id}}" title="{{title}}" repeat="{{catalogues}}"></catalogue-item>
+    </scroller>
+  </div>
+</template>
+
+<style>
+  .catalogue-container{
+    background: rgba(0, 0, 0, 0.6);
+  }
+</style>
+
+<script>
+  require('weex-components');
+  var navigator = require('@weex-module/navigator');
+  var apis = require('../common/api');
+  var data = require('../common/data');
+
+  module.exports = {
+    data: {
+      pageTitle: '',
+      menuId: '',
+      catalogues: [],
+      contentId: ''
+    },
+    created: function() {
+      var bundleUrl = this.$getConfig().bundleUrl;
+      this.menuId = apis.getParameterByName('name', bundleUrl);
+      this.pageTitle = data.catalogue[this.menuId].name;
+      this.catalogues = data.catalogue[this.menuId].list;
+      
+      this.$on('naviBar.leftItem.click',function(e){
+        var params = {
+            'animated' : 'true',
+        }
+        navigator.pop(params, function(e) {
+            this.menuSlidedown({
+              height: 0
+            }, 'ease-in', 500, function() {
+              console.log('finished');
+            });
+        });
+      });
+    },
+    methods: {
+      menuSlidedown: function(styles, timingFunction, duration, callback) {
+        console.log('slide down');
+        this.$call('animation', 'transition', this.$el('catalogue-list'), {
+          styles: styles,
+          timingFunction: timingFunction,
+          duration: duration
+        }, callback);
+      },
+      getParameterByName: function (name, url) {
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+      },
+      getGuideDetail: function() {
+        var guideId = this.id;
+        var params = {
+          'url': this.baseURL + 'modules/guide-detail.js?id=' + guideId,
+          'animated': 'true'
+        };
+        //navigator.push(params, function (e) {
+          //callback
+        //});
+      }
+    },
+    ready: function() {
+      this.menuSlidedown({
+        height: 1000
+      }, 'ease-in', 500, function() {
+        console.log('finished');
+      });
+    }
+  }
+</script>

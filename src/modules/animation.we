@@ -1,0 +1,71 @@
+<template>
+  <div>
+    <wxc-panel title="Transform" type="primary">
+      <wxc-button value="Translate" onclick="{{translate}}" type="primary" size="middle"
+                 style="margin-top:12px;"></wxc-button>
+                 style="margin-top:12px;"></wxc-button>
+    </wxc-panel>
+
+    <div id="block" class="block" style="transform-origin:{{transformOrigin}}">
+      <text class="block-txt">Anim</text>
+    </div>
+  </div>
+</template>
+
+<script>
+  require('weex-components');
+  module.exports = {
+    data: {
+      transformOrigin: 'center center',
+      current_rotate: 0,
+      current_scale: 1,
+      current_color: '#FF0000',
+      current_opacity: 1,
+      current_translate: '',
+      current_transform: '',
+      isStop: true
+    },
+    methods: {
+      anim: function(styles, timingFunction, duration, callback) {
+        console.log(this);
+        this.$call('animation', 'transition', this._ids.block.el.ref, {
+          styles: styles,
+          timingFunction: timingFunction,
+          duration: duration
+        }, callback);
+      },
+      translate: function() {
+        this.current_translate = this.current_translate ? '' : 'translate(50%, 50%)';
+        this.anim({
+          transform: this.current_translate
+        }, 'ease-in', 500, function() {
+        });
+      }
+    },
+    ready: function() {
+      this.current_translate = this.current_translate ? '' : 'translate(-100%, 50%)';
+      this.anim({
+        transform: this.current_translate
+      }, 'ease-in', 500, function() {
+      });
+    }
+  };
+</script>
+
+<style>
+  .block {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    top: 300px;
+    left: 400px;
+    background-color: #F0AD4E;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .block-txt {
+    color: #FFFFFF;
+    font-size: 70px;
+  }
+</style>

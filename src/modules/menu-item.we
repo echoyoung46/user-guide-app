@@ -1,0 +1,96 @@
+<template>
+  <div>
+    <cell class="cell" id="menucell" name="{{cell}}" onclick="{{redirect}}">
+      <img src="{{cell.icon}}" alt="" class="cell-icon">
+      <text class="cell-name">{{cell.title}}</text>
+    </cell>
+  </div>
+</template>
+
+<style>
+  .cell{
+    background: rgba(255, 255, 255, 0.6);
+    margin-bottom: 20;
+    margin-right: 20;
+    text-align: center;
+    position: relative;
+    width: 250;
+    height: 250;
+  }
+  .cell-icon{
+    width: 100;
+    height: 100;
+    background-size: cover;
+    text-align: center;
+    position: absolute;
+    top: 50;
+    left: 125;
+    margin-left: -50;
+  }
+  .cell-name{
+    color: #333;
+    font-size: 30px;
+    margin-top: 160;
+    margin-bottom: 100;
+  }
+</style>
+
+<script>
+  require('weex-components');
+  var navigator = require('@weex-module/navigator');
+  var apis = require('../common/api');
+
+  module.exports = {
+    data: {
+      url: '',
+      icon: '',
+      title: '',
+      baseURL: '',
+      name: ''
+    },
+    created: function () {
+      var self = this;
+
+      var bundleUrl = this.$getConfig().bundleUrl;
+      this.baseURL = apis.getBaseUrl(bundleUrl,true);
+
+    },
+    methods: {
+      redirect: function() {
+        var itemid = this.name;
+        
+        var params = {
+          'url': this.baseURL + 'modules/catalogue.js?name=' + itemid,
+          'animated': 'true'
+        };
+        navigator.push(params, function (e) {
+          //callback
+        });
+      },
+      cellAnim: function(styles, timingFunction, duration, callback) {
+        console.log(this._ids.menucell.el.ref);
+        this.$call('animation', 'transition', this.$el('menucell'), {
+          styles: styles,
+          timingFunction: timingFunction,
+          duration: duration
+        }, callback);
+      }
+    },
+    ready: function(){
+      // var animation = require('@weex-module/animation');
+      // var testEl = this.$el('menucell');
+      // animation.transition(testEl, {
+      //   styles: {
+      //     color: '#FF0000',
+      //     transform: 'translate(1, 1)',
+      //     transformOrigin: 'center center'
+      //   },
+      //   duration: 0, //ms
+      //   timingFunction: 'ease',
+      //   delay: 0 //ms
+      // }, function () {
+      //   nativeLog('animation finished.')
+      // })
+    }
+  }
+</script>

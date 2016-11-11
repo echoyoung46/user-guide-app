@@ -1,0 +1,39 @@
+<template>
+  <div class="container" id="page-container">
+    <div class="menu-row" repeat="{{list in menu}}">
+      <menu-item id="menu-item" repeat="{{v in list}}" cell="{{v}}"></menu-item>
+    </div>
+  </div>
+
+</template>
+
+<style>
+  .slider-page{
+    flex-direction: row;
+  }
+  .menu-row{
+    flex-direction: row;
+  }
+  .menu-item{
+    flex-direction: column;
+  }
+</style>
+
+<script>
+  module.exports = {
+    methods: {
+      cellAnim: function(styles, timingFunction, duration, callback) {
+        console.log('slide page cell anim');
+        this.$call('animation', 'transition', this.$el('menu-item'), {
+          styles: styles,
+          timingFunction: timingFunction,
+          duration: duration
+        }, callback);
+      }
+    },
+    ready: function() {
+      //console.log(this.$el('page-container'));
+      
+    }
+  }
+</script>

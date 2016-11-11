@@ -39,46 +39,46 @@
     bottom: 0;
   }
   .app-container{
-    background: url(src/images/bg.jpg) no-repeat center;
+    background: url(src/images/bg1.jpg) no-repeat center;
     background-size: cover;
+    overflow: hidden;
   }
   .app-content{
-    background: #fff;
-    opacity: 0.5;
+    
   }
   .app-navigator{
     position: fixed;
   }
   .app-menu{
-    position: absolute;
-    top: 150;
-    bottom: 30;
-    left: 30;
-    right: 120;
+    width: 600;
+    height: 1000;
+    top: 100;
+    left: 50;
   }
 </style>
 
 <script>
-    module.exports = {
-      data: {
-        count: 0,
-        ison: false
-      },
-      created: function() {
-        var self = this;
-        this.$on('toggleMenu', function(e) {
+  require('./modules/menu.we');
+  module.exports = {
+    data: {
+      count: 0,
+      ison: false
+    },
+    created: function() {
+      var self = this;
+      this.$on('toggleMenu', function(e) {
+        this.ison = !this.ison;
+        self.$broadcast('controlMenu', {ison: this.ison});
+      })
+    },
+    methods: {
+      topClick: function(){
+        if( this.ison ) {
           this.ison = !this.ison;
+          var self = this;
           self.$broadcast('controlMenu', {ison: this.ison});
-        })
-      },
-      methods: {
-        topClick: function(){
-          if( this.ison ) {
-            this.ison = !this.ison;
-            var self = this;
-            self.$broadcast('controlMenu', {ison: this.ison});
-          }
         }
       }
     }
+  }
 </script>

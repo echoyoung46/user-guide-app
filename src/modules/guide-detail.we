@@ -1,0 +1,48 @@
+<template>
+  <div>
+    <wxc-navpage data-role="none" background-color="#fafbfb" title="首页" title-color="#333" left-item-src="/src/images/back-icon.svg" left-item-color="white"></wxc-navpage>
+    <div class="guide-content">
+      <text>{{guideDetail}}</text>
+    </div>
+  </div>
+</template>
+
+<style>
+  .guide-content{
+    top: 88;
+  }
+</style>
+
+<script>
+  require('weex-components');
+  var navigator = require('@weex-module/navigator');
+  var apis = require('../common/api');
+  var data = require('../common/data');
+
+  module.exports = {
+    data: {
+      pageTitle: '',
+      contentId: '',
+      guideDetail: ''
+    },
+    created: function() {
+      var bundleUrl = this.$getConfig().bundleUrl;
+      
+      this.contentId = apis.getParameterByName('id', bundleUrl);
+      this.pageTitle = data.guides[this.contentId].title;
+      this.guideDetail = data.guides[this.contentId].content;
+      console.log(this.guideDetail);
+      this.$on('naviBar.leftItem.click',function(e){
+        var params = {
+            'animated' : 'true',
+        }
+        navigator.pop(params, function(e) {
+            //callback
+        });
+      });
+    },
+    methods: {
+      
+    }
+  }
+</script>

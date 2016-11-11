@@ -1,0 +1,104 @@
+<template>
+  <div class="container">
+    <slider append="tree" class="slider-container">
+      <slider-page class="slider-page" repeat="{{menu in menuList}}" menu={{menu}}></slider-page>
+    </slider>
+    <!--<menu-item repeat="{{v}}" name="{{name}}" icon="{{icon}}" title="{{title}}"></menu-item>-->
+  </div>
+</template>
+
+<style>
+  .slider-container{
+    width: 1200;
+    height: 1000;
+    flex-direction: column;
+  }
+  .slider-page{
+    width: 500;
+    height: 1000;
+  }
+  .full{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; 
+  }
+  .menulist{
+    color: #000;
+  }
+  .row{
+    flex-direction: row;
+  }
+  .menu-item{
+    font-size: 50px;
+    line-height: 80px;
+    padding-left: 20px;
+  }
+</style>
+
+<script>
+  var apis = require('../common/api');
+  var data = require('../common/data');
+  
+  module.exports = {
+    data: {
+      root: '',
+      transformOrigin: 'center center',
+      title: 'test',
+      shown: false,
+      menuList: data.menu
+    },
+    methods: {
+      anim: function(styles, timingFunction, duration, callback) {
+        this.$call('animation', 'transition', this._ids.menulist.el.ref, {
+          styles: styles,
+          timingFunction: timingFunction,
+          duration: duration
+        }, callback);
+      },
+      translate: function(_step) {
+        this.current_translate = _step ? _step : 'translate(-100%, 0)';
+        this.anim({
+          transform: this.current_translate
+        }, 'linear', 300, function() {
+        });
+      },
+      clickTitle: function() {
+        console.log('click title');
+      },
+      clickItem: function() {
+        console.log('click item');
+      },
+      default: function() {
+        return false;
+      },
+      redirect: function() {
+        console.log(this);
+        //this.$openURL(this.url);
+      }
+    },
+    created: function() {
+      //var bundleUrl = this.$getConfig().bundleUrl;
+      //var base = apis.getBaseUrl(bundleUrl);
+
+      //for (var i = 0; i < this.menu.length; i++) {
+        //var menuRow = this.menu[i];
+        
+        //for (var j = 0; j < menuRow.length; j++) {
+          //var tabItem = menuRow[j];
+          //tabItem.src = base + tabItem.name;
+          //console.log(tabItem.src);
+        //}
+          
+      //}
+    },
+    ready: function() {
+      //this.current_translate = this.current_translate ? '' : 'translate(-100%, 0)';
+      //this.anim({
+        //transform: this.current_translate
+      //}, 'ease-in', 500, function() {
+      //});
+    }
+  }
+</script>
