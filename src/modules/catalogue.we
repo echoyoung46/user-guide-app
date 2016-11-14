@@ -9,7 +9,7 @@
 
 <style>
   .catalogue-container{
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.5);
   }
 </style>
 
@@ -48,6 +48,7 @@
     methods: {
       menuSlidedown: function(styles, timingFunction, duration, callback) {
         console.log('slide down');
+        console.log(this._ids);
         this.$call('animation', 'transition', this.$el('catalogue-list'), {
           styles: styles,
           timingFunction: timingFunction,

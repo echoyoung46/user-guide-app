@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	;__weex_define__("@weex-component/25fddd19e249c96cb9129d1e0a296e55", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/c5bb0464c31ce6e20e6fbb9f385fef6e", [], function(__weex_require__, __weex_exports__, __weex_module__){
 	__webpack_require__(2);
 
 	;
@@ -174,7 +174,7 @@
 	  }
 	})
 	})
-	;__weex_bootstrap__("@weex-component/25fddd19e249c96cb9129d1e0a296e55", {
+	;__weex_bootstrap__("@weex-component/c5bb0464c31ce6e20e6fbb9f385fef6e", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 
@@ -190,8 +190,7 @@
 	  __weex_module__.exports = {
 	    methods: {
 	      cellAnim: function(styles, timingFunction, duration, callback) {
-	        console.log('slide page cell anim');
-	        this.$call('animation', 'transition', this.$el('menu-item'), {
+	        this.$call('animation', 'transition', this._ids.menuitem.el.ref, {
 	          styles: styles,
 	          timingFunction: timingFunction,
 	          duration: duration
@@ -200,7 +199,11 @@
 	    },
 	    ready: function() {
 	      //console.log(this.$el('page-container'));
-	      
+	      // this.cellAnim({
+	      //   transform: 'rotate(45deg)'
+	      // },'ease-in-out',500,function(){
+	      //   console.log('cellAnim');
+	      // });
 	    }
 	  }
 
@@ -224,7 +227,7 @@
 	      "children": [
 	        {
 	          "type": "menu-item",
-	          "id": "menu-item",
+	          "id": "menuitem",
 	          "repeat": {
 	            "expression": function () {return this.list},
 	            "value": "v"
@@ -276,6 +279,11 @@
 	      var bundleUrl = this.$getConfig().bundleUrl;
 	      this.baseURL = apis.getBaseUrl(bundleUrl,true);
 
+	      // self.cellAnim({
+	      //   transform: 'rotate(45deg)'
+	      // },'ease-in-out',500,function(){
+	      //   console.log('cellAnim');
+	      // });
 	    },
 	    methods: {
 	      redirect: function() {
@@ -299,8 +307,18 @@
 	      }
 	    },
 	    ready: function(){
+	      var self= this;
+
+	      // self.cellAnim({
+	      //   transform: 'rotate(45deg)'
+	      // },'ease-in-out',500,function(){
+	      //   console.log('cellAnim');
+	      // });
+
+
 	      // var animation = __weex_require__('@weex-module/animation');
-	      // var testEl = this.$el('menucell');
+	      // var testEl = this.$el('menuitem');
+	      // console.log(testEl);
 	      // animation.transition(testEl, {
 	      //   styles: {
 	      //     color: '#FF0000',
@@ -1689,7 +1707,7 @@
 	exports.guides = {
 	  '11': {
 	    title: '连接到 WiFi',
-	    content: '<h1 id="iph1b489c85f" style="font-size:1.9rem;font-family:HelveticaNeue-Light, &quot;font-weight:400;color:#4B4B4B;background-color:#FFFFFF;">连接到无线局域网</h1>'
+	    content: '&lt;h1 id="iph1b489c85f" style="font-size:1.9rem;font-family:HelveticaNeue-Light, &quot;font-weight:400;color:#4B4B4B;background-color:#FFFFFF;"&gt;连接到无线局域网&lt;/h1&gt;'
 	  },
 	  '12': {
 	    title: '连接到互联网',

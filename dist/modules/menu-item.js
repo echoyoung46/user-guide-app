@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	;__weex_define__("@weex-component/43af0feeb1d17c64460bb6caf6b6c67d", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/870f701c68f4829c74ad0566cadd5cab", [], function(__weex_require__, __weex_exports__, __weex_module__){
 
 	;
 	  __webpack_require__(4);
@@ -65,6 +65,11 @@
 	      var bundleUrl = this.$getConfig().bundleUrl;
 	      this.baseURL = apis.getBaseUrl(bundleUrl,true);
 
+	      // self.cellAnim({
+	      //   transform: 'rotate(45deg)'
+	      // },'ease-in-out',500,function(){
+	      //   console.log('cellAnim');
+	      // });
 	    },
 	    methods: {
 	      redirect: function() {
@@ -88,8 +93,18 @@
 	      }
 	    },
 	    ready: function(){
+	      var self= this;
+
+	      // self.cellAnim({
+	      //   transform: 'rotate(45deg)'
+	      // },'ease-in-out',500,function(){
+	      //   console.log('cellAnim');
+	      // });
+
+
 	      // var animation = __weex_require__('@weex-module/animation');
-	      // var testEl = this.$el('menucell');
+	      // var testEl = this.$el('menuitem');
+	      // console.log(testEl);
 	      // animation.transition(testEl, {
 	      //   styles: {
 	      //     color: '#FF0000',
@@ -175,7 +190,7 @@
 	  }
 	})
 	})
-	;__weex_bootstrap__("@weex-component/43af0feeb1d17c64460bb6caf6b6c67d", {
+	;__weex_bootstrap__("@weex-component/870f701c68f4829c74ad0566cadd5cab", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 

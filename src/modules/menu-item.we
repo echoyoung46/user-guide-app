@@ -54,6 +54,11 @@
       var bundleUrl = this.$getConfig().bundleUrl;
       this.baseURL = apis.getBaseUrl(bundleUrl,true);
 
+      // self.cellAnim({
+      //   transform: 'rotate(45deg)'
+      // },'ease-in-out',500,function(){
+      //   console.log('cellAnim');
+      // });
     },
     methods: {
       redirect: function() {
@@ -77,8 +82,18 @@
       }
     },
     ready: function(){
+      var self= this;
+
+      // self.cellAnim({
+      //   transform: 'rotate(45deg)'
+      // },'ease-in-out',500,function(){
+      //   console.log('cellAnim');
+      // });
+
+
       // var animation = require('@weex-module/animation');
-      // var testEl = this.$el('menucell');
+      // var testEl = this.$el('menuitem');
+      // console.log(testEl);
       // animation.transition(testEl, {
       //   styles: {
       //     color: '#FF0000',

@@ -1,7 +1,7 @@
 <template>
   <div class="container" id="page-container">
     <div class="menu-row" repeat="{{list in menu}}">
-      <menu-item id="menu-item" repeat="{{v in list}}" cell="{{v}}"></menu-item>
+      <menu-item id="menuitem" repeat="{{v in list}}" cell="{{v}}"></menu-item>
     </div>
   </div>
 
@@ -23,8 +23,7 @@
   module.exports = {
     methods: {
       cellAnim: function(styles, timingFunction, duration, callback) {
-        console.log('slide page cell anim');
-        this.$call('animation', 'transition', this.$el('menu-item'), {
+        this.$call('animation', 'transition', this._ids.menuitem.el.ref, {
           styles: styles,
           timingFunction: timingFunction,
           duration: duration
@@ -33,7 +32,11 @@
     },
     ready: function() {
       //console.log(this.$el('page-container'));
-      
+      // this.cellAnim({
+      //   transform: 'rotate(45deg)'
+      // },'ease-in-out',500,function(){
+      //   console.log('cellAnim');
+      // });
     }
   }
 </script>

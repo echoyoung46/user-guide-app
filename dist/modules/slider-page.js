@@ -44,15 +44,14 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	;__weex_define__("@weex-component/b3dc270c1208db31cf83600834e44dcd", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/989ebe019e6618757954d253e5c66681", [], function(__weex_require__, __weex_exports__, __weex_module__){
 	__webpack_require__(3);
 
 	;
 	  __weex_module__.exports = {
 	    methods: {
 	      cellAnim: function(styles, timingFunction, duration, callback) {
-	        console.log('slide page cell anim');
-	        this.$call('animation', 'transition', this.$el('menu-item'), {
+	        this.$call('animation', 'transition', this._ids.menuitem.el.ref, {
 	          styles: styles,
 	          timingFunction: timingFunction,
 	          duration: duration
@@ -61,7 +60,11 @@
 	    },
 	    ready: function() {
 	      //console.log(this.$el('page-container'));
-	      
+	      // this.cellAnim({
+	      //   transform: 'rotate(45deg)'
+	      // },'ease-in-out',500,function(){
+	      //   console.log('cellAnim');
+	      // });
 	    }
 	  }
 
@@ -85,7 +88,7 @@
 	      "children": [
 	        {
 	          "type": "menu-item",
-	          "id": "menu-item",
+	          "id": "menuitem",
 	          "repeat": {
 	            "expression": function () {return this.list},
 	            "value": "v"
@@ -111,7 +114,7 @@
 	  }
 	})
 	})
-	;__weex_bootstrap__("@weex-component/b3dc270c1208db31cf83600834e44dcd", {
+	;__weex_bootstrap__("@weex-component/989ebe019e6618757954d253e5c66681", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 
@@ -142,6 +145,11 @@
 	      var bundleUrl = this.$getConfig().bundleUrl;
 	      this.baseURL = apis.getBaseUrl(bundleUrl,true);
 
+	      // self.cellAnim({
+	      //   transform: 'rotate(45deg)'
+	      // },'ease-in-out',500,function(){
+	      //   console.log('cellAnim');
+	      // });
 	    },
 	    methods: {
 	      redirect: function() {
@@ -165,8 +173,18 @@
 	      }
 	    },
 	    ready: function(){
+	      var self= this;
+
+	      // self.cellAnim({
+	      //   transform: 'rotate(45deg)'
+	      // },'ease-in-out',500,function(){
+	      //   console.log('cellAnim');
+	      // });
+
+
 	      // var animation = __weex_require__('@weex-module/animation');
-	      // var testEl = this.$el('menucell');
+	      // var testEl = this.$el('menuitem');
+	      // console.log(testEl);
 	      // animation.transition(testEl, {
 	      //   styles: {
 	      //     color: '#FF0000',

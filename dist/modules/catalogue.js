@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	;__weex_define__("@weex-component/934d2c791f28be5c8c7f3774725f16b5", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/d0d8cfa8352ce6c3028a87c883b19fa5", [], function(__weex_require__, __weex_exports__, __weex_module__){
 	__webpack_require__(18);
 
 	;
@@ -82,6 +82,7 @@
 	    methods: {
 	      menuSlidedown: function(styles, timingFunction, duration, callback) {
 	        console.log('slide down');
+	        console.log(this._ids);
 	        this.$call('animation', 'transition', this.$el('catalogue-list'), {
 	          styles: styles,
 	          timingFunction: timingFunction,
@@ -159,11 +160,11 @@
 	;__weex_module__.exports.style = __weex_module__.exports.style || {}
 	;Object.assign(__weex_module__.exports.style, {
 	  "catalogue-container": {
-	    "background": "rgba(0, 0, 0, 0.6)"
+	    "background": "rgba(0, 0, 0, 0.5)"
 	  }
 	})
 	})
-	;__weex_bootstrap__("@weex-component/934d2c791f28be5c8c7f3774725f16b5", {
+	;__weex_bootstrap__("@weex-component/d0d8cfa8352ce6c3028a87c883b19fa5", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 
@@ -1472,7 +1473,7 @@
 	exports.guides = {
 	  '11': {
 	    title: '连接到 WiFi',
-	    content: '<h1 id="iph1b489c85f" style="font-size:1.9rem;font-family:HelveticaNeue-Light, &quot;font-weight:400;color:#4B4B4B;background-color:#FFFFFF;">连接到无线局域网</h1>'
+	    content: '&lt;h1 id="iph1b489c85f" style="font-size:1.9rem;font-family:HelveticaNeue-Light, &quot;font-weight:400;color:#4B4B4B;background-color:#FFFFFF;"&gt;连接到无线局域网&lt;/h1&gt;'
 	  },
 	  '12': {
 	    title: '连接到互联网',
