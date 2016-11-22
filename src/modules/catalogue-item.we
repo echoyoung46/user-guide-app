@@ -6,12 +6,15 @@
 
 <style>
   .catalogue-item{
-    width: 750;
+    width: 730;
     height: 100;
     line-height: 100;
     border-bottom: 1px solid #fff;
-    background: rgba(255, 255, 255, 0.6);
+    background: rgba(255, 255, 255, 1);
     color: #333;
+    border-radius: 10;
+    margin: 10;
+    margin-top: 0;
   }
   .catalogue-name{
     padding-left: 30;

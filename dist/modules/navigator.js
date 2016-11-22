@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	;__weex_define__("@weex-component/5c709e85cd1c6d45d652f35e22cc8b3c", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/e89d3b6a9aa0fc2ec6c38461fe8c6ad8", [], function(__weex_require__, __weex_exports__, __weex_module__){
 
 	;
 	  __webpack_require__(4);
@@ -106,7 +106,7 @@
 	;__weex_module__.exports.style = __weex_module__.exports.style || {}
 	;Object.assign(__weex_module__.exports.style, {
 	  "nav_bar": {
-	    "backgroundColor": "#fafbfb",
+	    "backgroundColor": "#0dbbf2",
 	    "height": 100,
 	    "flexDirection": "row",
 	    "justifyContent": "space-between",
@@ -118,11 +118,11 @@
 	    "marginLeft": 30
 	  },
 	  "menu-title": {
-	    "color": "#4b4b4b"
+	    "color": "#ffffff"
 	  }
 	})
 	})
-	;__weex_bootstrap__("@weex-component/5c709e85cd1c6d45d652f35e22cc8b3c", {
+	;__weex_bootstrap__("@weex-component/e89d3b6a9aa0fc2ec6c38461fe8c6ad8", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 

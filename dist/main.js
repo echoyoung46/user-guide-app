@@ -95,7 +95,7 @@
 	})
 	});
 
-	;__weex_define__("@weex-component/f2a624f796705ca63d5f11f15aa51aaa", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/a9f60ad83f2d0d96562a3a5214d06ee1", [], function(__weex_require__, __weex_exports__, __weex_module__){
 
 	;
 	  __webpack_require__(1);
@@ -160,7 +160,7 @@
 	    "bottom": 0
 	  },
 	  "app-container": {
-	    "background": "url(src/images/bg1.jpg) no-repeat center",
+	    "background": "url(src/images/bg1.jpg) no-repeat 28%",
 	    "backgroundSize": "cover",
 	    "overflow": "hidden"
 	  },
@@ -175,7 +175,7 @@
 	  }
 	})
 	})
-	;__weex_bootstrap__("@weex-component/f2a624f796705ca63d5f11f15aa51aaa", {
+	;__weex_bootstrap__("@weex-component/a9f60ad83f2d0d96562a3a5214d06ee1", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 
@@ -513,13 +513,14 @@
 	;__weex_module__.exports.style = __weex_module__.exports.style || {}
 	;Object.assign(__weex_module__.exports.style, {
 	  "cell": {
-	    "background": "rgba(255, 255, 255, 0.6)",
+	    "background": "rgba(133, 181, 239, 0.5)",
 	    "marginBottom": 20,
 	    "marginRight": 20,
 	    "textAlign": "center",
 	    "position": "relative",
 	    "width": 250,
-	    "height": 250
+	    "height": 250,
+	    "borderRadius": 20
 	  },
 	  "cell-icon": {
 	    "width": 100,
@@ -527,13 +528,13 @@
 	    "backgroundSize": "cover",
 	    "textAlign": "center",
 	    "position": "absolute",
-	    "top": 50,
+	    "top": 40,
 	    "left": 125,
 	    "marginLeft": -50
 	  },
 	  "cell-name": {
 	    "color": "#333333",
-	    "fontSize": 30,
+	    "fontSize": 36,
 	    "marginTop": 160,
 	    "marginBottom": 100
 	  }

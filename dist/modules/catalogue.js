@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	;__weex_define__("@weex-component/d0d8cfa8352ce6c3028a87c883b19fa5", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/c766e1a0526ea461c16a5a4554ba77a6", [], function(__weex_require__, __weex_exports__, __weex_module__){
 	__webpack_require__(18);
 
 	;
@@ -128,11 +128,11 @@
 	      "type": "wxc-navpage",
 	      "attr": {
 	        "dataRole": "none",
-	        "backgroundColor": "#fafbfb",
-	        "title": "首页",
-	        "titleColor": "#333",
+	        "backgroundColor": "#0dbbf2",
+	        "title": function () {return this.pageTitle},
+	        "titleColor": "#fff",
 	        "leftItemSrc": "/src/images/back-icon.svg",
-	        "leftItemColor": "white"
+	        "leftItemColor": "#fff"
 	      }
 	    },
 	    {
@@ -142,7 +142,8 @@
 	        "position": "absolute",
 	        "top": 88,
 	        "height": 0,
-	        "overflow": "hidden"
+	        "overflow": "hidden",
+	        "paddingTop": 10
 	      },
 	      "children": [
 	        {
@@ -160,11 +161,11 @@
 	;__weex_module__.exports.style = __weex_module__.exports.style || {}
 	;Object.assign(__weex_module__.exports.style, {
 	  "catalogue-container": {
-	    "background": "rgba(0, 0, 0, 0.5)"
+	    "background": "#ddd"
 	  }
 	})
 	})
-	;__weex_bootstrap__("@weex-component/d0d8cfa8352ce6c3028a87c883b19fa5", {
+	;__weex_bootstrap__("@weex-component/c766e1a0526ea461c16a5a4554ba77a6", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 
@@ -1546,12 +1547,15 @@
 	;__weex_module__.exports.style = __weex_module__.exports.style || {}
 	;Object.assign(__weex_module__.exports.style, {
 	  "catalogue-item": {
-	    "width": 750,
+	    "width": 730,
 	    "height": 100,
 	    "lineHeight": 100,
 	    "borderBottom": "1px solid #fff",
-	    "background": "rgba(255, 255, 255, 0.6)",
-	    "color": "#333333"
+	    "background": "rgba(255, 255, 255, 1)",
+	    "color": "#333333",
+	    "borderRadius": 10,
+	    "margin": 10,
+	    "marginTop": 0
 	  },
 	  "catalogue-name": {
 	    "paddingLeft": 30

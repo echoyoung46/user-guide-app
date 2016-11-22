@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	;__weex_define__("@weex-component/1152926881f015d93927b0ed80370a24", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/c15e199cd28646f0da736e6faeb21a6d", [], function(__weex_require__, __weex_exports__, __weex_module__){
 
 	;
 	  __webpack_require__(4);
@@ -104,19 +104,22 @@
 	;__weex_module__.exports.style = __weex_module__.exports.style || {}
 	;Object.assign(__weex_module__.exports.style, {
 	  "catalogue-item": {
-	    "width": 750,
+	    "width": 730,
 	    "height": 100,
 	    "lineHeight": 100,
 	    "borderBottom": "1px solid #fff",
-	    "background": "rgba(255, 255, 255, 0.6)",
-	    "color": "#333333"
+	    "background": "rgba(255, 255, 255, 1)",
+	    "color": "#333333",
+	    "borderRadius": 10,
+	    "margin": 10,
+	    "marginTop": 0
 	  },
 	  "catalogue-name": {
 	    "paddingLeft": 30
 	  }
 	})
 	})
-	;__weex_bootstrap__("@weex-component/1152926881f015d93927b0ed80370a24", {
+	;__weex_bootstrap__("@weex-component/c15e199cd28646f0da736e6faeb21a6d", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 

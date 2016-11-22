@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	;__weex_define__("@weex-component/870f701c68f4829c74ad0566cadd5cab", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/6968c3cb51fd2f9dc2cb8a8db09b18e0", [], function(__weex_require__, __weex_exports__, __weex_module__){
 
 	;
 	  __webpack_require__(4);
@@ -164,13 +164,14 @@
 	;__weex_module__.exports.style = __weex_module__.exports.style || {}
 	;Object.assign(__weex_module__.exports.style, {
 	  "cell": {
-	    "background": "rgba(255, 255, 255, 0.6)",
+	    "background": "rgba(133, 181, 239, 0.5)",
 	    "marginBottom": 20,
 	    "marginRight": 20,
 	    "textAlign": "center",
 	    "position": "relative",
 	    "width": 250,
-	    "height": 250
+	    "height": 250,
+	    "borderRadius": 20
 	  },
 	  "cell-icon": {
 	    "width": 100,
@@ -178,19 +179,19 @@
 	    "backgroundSize": "cover",
 	    "textAlign": "center",
 	    "position": "absolute",
-	    "top": 50,
+	    "top": 40,
 	    "left": 125,
 	    "marginLeft": -50
 	  },
 	  "cell-name": {
 	    "color": "#333333",
-	    "fontSize": 30,
+	    "fontSize": 36,
 	    "marginTop": 160,
 	    "marginBottom": 100
 	  }
 	})
 	})
-	;__weex_bootstrap__("@weex-component/870f701c68f4829c74ad0566cadd5cab", {
+	;__weex_bootstrap__("@weex-component/6968c3cb51fd2f9dc2cb8a8db09b18e0", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <wxc-navpage data-role="none" background-color="#fafbfb" title="首页" title-color="#333" left-item-src="/src/images/back-icon.svg" left-item-color="white"></wxc-navpage>
-    <div class="guide-content" style="background-color:#ff0000;">
-      <text>{{guideDetail}}</text>
+    <wxc-navpage data-role="none" background-color="#0dbbf2" title="{{pageTitle}}" title-color="#fff" left-item-src="/src/images/back-icon.svg" left-item-color="  #fff"></wxc-navpage>
+    <div class="guide-content">
+      <text>{{content}}</text>
     </div>
   </div>
 </template>
@@ -24,7 +24,7 @@
     data: {
       pageTitle: '',
       contentId: '',
-      guideDetail: ''
+      content: ''
     },
     created: function() {
       var bundleUrl = this.$getConfig().bundleUrl;
@@ -35,7 +35,7 @@
       var div = $('<div>')[0];
       div.innerHTML = data.guides[this.contentId].content;
       console.log(div.innerText);
-      this.guideDetail = div.innerText;
+      this.content = div.innerText;
       this.$on('naviBar.leftItem.click',function(e){
         var params = {
             'animated' : 'true',

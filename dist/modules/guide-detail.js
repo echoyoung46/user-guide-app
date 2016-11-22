@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	;__weex_define__("@weex-component/fc6fa2306e8271479e5e6abaa84f1c22", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/ae203400f6fad7f4203e8a9e46552bf9", [], function(__weex_require__, __weex_exports__, __weex_module__){
 
 	;
 	  __webpack_require__(4);
@@ -57,7 +57,7 @@
 	    data: function () {return {
 	      pageTitle: '',
 	      contentId: '',
-	      guideDetail: ''
+	      content: ''
 	    }},
 	    created: function() {
 	      var bundleUrl = this.$getConfig().bundleUrl;
@@ -68,7 +68,7 @@
 	      var div = $('<div>')[0];
 	      div.innerHTML = data.guides[this.contentId].content;
 	      console.log(div.innerText);
-	      this.guideDetail = div.innerText;
+	      this.content = div.innerText;
 	      this.$on('naviBar.leftItem.click',function(e){
 	        var params = {
 	            'animated' : 'true',
@@ -91,11 +91,11 @@
 	      "type": "wxc-navpage",
 	      "attr": {
 	        "dataRole": "none",
-	        "backgroundColor": "#fafbfb",
-	        "title": "首页",
-	        "titleColor": "#333",
+	        "backgroundColor": "#0dbbf2",
+	        "title": function () {return this.pageTitle},
+	        "titleColor": "#fff",
 	        "leftItemSrc": "/src/images/back-icon.svg",
-	        "leftItemColor": "white"
+	        "leftItemColor": "#fff"
 	      }
 	    },
 	    {
@@ -103,14 +103,11 @@
 	      "classList": [
 	        "guide-content"
 	      ],
-	      "style": {
-	        "backgroundColor": "#ff0000"
-	      },
 	      "children": [
 	        {
 	          "type": "text",
 	          "attr": {
-	            "value": function () {return this.guideDetail}
+	            "value": function () {return this.content}
 	          }
 	        }
 	      ]
@@ -124,7 +121,7 @@
 	  }
 	})
 	})
-	;__weex_bootstrap__("@weex-component/fc6fa2306e8271479e5e6abaa84f1c22", {
+	;__weex_bootstrap__("@weex-component/ae203400f6fad7f4203e8a9e46552bf9", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 

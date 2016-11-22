@@ -1,7 +1,7 @@
 <template>
   <div class="catalogue-container">
-    <wxc-navpage data-role="none" background-color="#fafbfb" title="首页" title-color="#333" left-item-src="/src/images/back-icon.svg" left-item-color="white"></wxc-navpage>
-    <scroller id="catalogue-list" style="position:absolute;top:88;height:0;overflow:hidden;">
+    <wxc-navpage data-role="none" background-color="#0dbbf2" title="{{pageTitle}}" title-color="#fff" left-item-src="/src/images/back-icon.svg" left-item-color="  #fff"></wxc-navpage>
+    <scroller id="catalogue-list" style="position:absolute;top:88;height:0;overflow:hidden;padding-top: 10;">
       <catalogue-item id="{{id}}" title="{{title}}" repeat="{{catalogues}}"></catalogue-item>
     </scroller>
   </div>
@@ -9,7 +9,7 @@
 
 <style>
   .catalogue-container{
-    background: rgba(0, 0, 0, 0.5);
+    background: #ddd;
   }
 </style>
 
