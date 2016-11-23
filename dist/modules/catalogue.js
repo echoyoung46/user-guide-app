@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	;__weex_define__("@weex-component/c766e1a0526ea461c16a5a4554ba77a6", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/dadc20e2fd5a8662e38e1831db033b12", [], function(__weex_require__, __weex_exports__, __weex_module__){
 	__webpack_require__(18);
 
 	;
@@ -161,11 +161,11 @@
 	;__weex_module__.exports.style = __weex_module__.exports.style || {}
 	;Object.assign(__weex_module__.exports.style, {
 	  "catalogue-container": {
-	    "background": "#ddd"
+	    "background": "#efefef"
 	  }
 	})
 	})
-	;__weex_bootstrap__("@weex-component/c766e1a0526ea461c16a5a4554ba77a6", {
+	;__weex_bootstrap__("@weex-component/dadc20e2fd5a8662e38e1831db033b12", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 

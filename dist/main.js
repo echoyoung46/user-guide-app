@@ -95,7 +95,7 @@
 	})
 	});
 
-	;__weex_define__("@weex-component/a9f60ad83f2d0d96562a3a5214d06ee1", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/b0fa3abcd0d1ac3b7c1d187e7938215f", [], function(__weex_require__, __weex_exports__, __weex_module__){
 
 	;
 	  __webpack_require__(1);
@@ -175,7 +175,7 @@
 	  }
 	})
 	})
-	;__weex_bootstrap__("@weex-component/a9f60ad83f2d0d96562a3a5214d06ee1", {
+	;__weex_bootstrap__("@weex-component/b0fa3abcd0d1ac3b7c1d187e7938215f", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 
