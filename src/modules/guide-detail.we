@@ -3,6 +3,10 @@
     <wxc-navpage data-role="none" background-color="#0dbbf2" title="{{pageTitle}}" title-color="#fff" left-item-src="/src/images/back-icon.svg" left-item-color="  #fff"></wxc-navpage>
     <div class="guide-content">
       <text>{{content}}</text>
+      <div>
+          <video class="video" auto-play="true" src="/src/audio/alone.mp3" style="width:500;height:500;"></video>
+      </div>
+       <canvas style="width:250;height:250;" id="canvas"></canvas>
     </div>
   </div>
 </template>
@@ -10,12 +14,16 @@
 <style>
   .guide-content{
     top: 88;
+    padding: 20;
+    line-height: 50;
   }
 </style>
 
 <script>
   require('weex-components');
   var $ = require('jquery');
+  var Canvas = require('weex-canvas');
+
   var navigator = require('@weex-module/navigator');
   var apis = require('../common/api');
   var data = require('../common/data');
@@ -44,6 +52,8 @@
             //callback
         });
       });
+
+      console.log(Canvas);
     },
     methods: {
       

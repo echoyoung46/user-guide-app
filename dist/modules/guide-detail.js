@@ -44,11 +44,13 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	;__weex_define__("@weex-component/8e1b8290e14933e7a08f32de48e9a492", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/4763c68db1b7be5ca22c641c78a18637", [], function(__weex_require__, __weex_exports__, __weex_module__){
 
 	;
 	  __webpack_require__(4);
-	  var $ = __webpack_require__(19);
+	  var $ = __webpack_require__(21);
+	  var Canvas = __webpack_require__(19);
+
 	  var navigator = __weex_require__('@weex-module/navigator');
 	  var apis = __webpack_require__(16);
 	  var data = __webpack_require__(17);
@@ -77,6 +79,8 @@
 	            //callback
 	        });
 	      });
+
+	      console.log(Canvas);
 	    },
 	    methods: {
 	      
@@ -109,6 +113,33 @@
 	          "attr": {
 	            "value": function () {return this.content}
 	          }
+	        },
+	        {
+	          "type": "div",
+	          "children": [
+	            {
+	              "type": "video",
+	              "classList": [
+	                "video"
+	              ],
+	              "attr": {
+	                "autoPlay": "true",
+	                "src": "/src/audio/alone.mp3"
+	              },
+	              "style": {
+	                "width": 500,
+	                "height": 500
+	              }
+	            }
+	          ]
+	        },
+	        {
+	          "type": "canvas",
+	          "style": {
+	            "width": 250,
+	            "height": 250
+	          },
+	          "id": "canvas"
 	        }
 	      ]
 	    }
@@ -117,11 +148,13 @@
 	;__weex_module__.exports.style = __weex_module__.exports.style || {}
 	;Object.assign(__weex_module__.exports.style, {
 	  "guide-content": {
-	    "top": 88
+	    "top": 88,
+	    "padding": 20,
+	    "lineHeight": 50
 	  }
 	})
 	})
-	;__weex_bootstrap__("@weex-component/8e1b8290e14933e7a08f32de48e9a492", {
+	;__weex_bootstrap__("@weex-component/4763c68db1b7be5ca22c641c78a18637", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 
@@ -1430,7 +1463,7 @@
 	exports.guides = {
 	  '11': {
 	    title: '连接到 WiFi',
-	    content: '&lt;h1 id="iph1b489c85f" style="font-size:1.9rem;font-family:HelveticaNeue-Light, &quot;font-weight:400;color:#4B4B4B;background-color:#FFFFFF;"&gt;连接到无线局域网&lt;/h1&gt;'
+	    content: '连接到无线局域网'
 	  },
 	  '12': {
 	    title: '连接到互联网',
@@ -1442,6 +1475,287 @@
 /***/ },
 /* 18 */,
 /* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	;__weex_define__("@weex-component/canvas", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	var util = __webpack_require__(20);
+	var weexCanvasModule = util.requireWeexModule('canvas');
+
+	function initCanvas() {
+	    var Canvas = function (elemRef) {
+	        this.elemRef = elemRef;
+	        this.drawActionList = [];
+	        this._matrix = [1, 0, 0, 0, 1, 0, 0, 0, 1];
+	        this.fillStyle = 'white';
+	        this.strokeStyle = 'white';
+	        this._currentPoints = [];
+	        this.lineWidth = 1;
+	        this._globalAlpha = 1;
+	        this._stack = [];
+	    };
+
+	    ['clearRect', 'fillRect', 'setGlobalAlpha', 'setFillStyle', 'strokeRect', 'setLineWidth', 'setStrokeStyle'].forEach(function (name) {
+	        Canvas.prototype[name] = function () {
+	            var args = [name];
+	            if (arguments.length) {
+	                args.push([].slice.call(arguments));
+	            }
+	            this._pushDrawImages();
+	            this.drawActionList.push(args);
+	        };
+	    });
+
+	    Canvas.prototype.beginPath = function () {
+	        this._currentPoints = [];
+	    }
+
+	    Canvas.prototype.closePath = function () {
+	        this._currentPoints.push('L', this._currentPoints[1], this._currentPoints[2]);
+	    }
+
+	    Canvas.prototype.moveTo = function (x, y) {
+	        this._currentPoints.push('M', x, y);
+	    }
+
+	    Canvas.prototype.lineTo = function (x, y) {
+	        this._currentPoints.push('L', x, y);
+	    }
+
+	    Canvas.prototype.arc = function (x, y, r, startAngle, endAngle, anticlockwise) {
+	        // 每1像素对应的角度
+	        var step = Math.asin(1 / r);
+	        if (step < Math.PI / 180) {
+	            step = Math.PI / 180;
+	        }
+
+	        if (anticlockwise) {
+	            startAngle = Math.PI * 2 - startAngle;
+	            endAngle = Math.PI * 2 - endAngle;
+	            step = -step;
+	        }
+	        for (var angle = startAngle; (step > 0 ? angle <= endAngle : angle >= endAngle); angle += step) {
+	            this._currentPoints.push('L', x + r * Math.cos(angle), y + r * Math.sin(angle));
+	        }
+	    }
+
+	    Canvas.prototype.stroke = function () {
+	        this._pushDrawImages();
+	        this.drawActionList.push(['strokeLines', this._currentPoints]);
+	    }
+
+	    function defineProperty(name) {
+	        Object.defineProperty(Canvas.prototype, name, {
+	            get: function () {
+	                return this['_' + name];
+	            },
+	            set: function (value) {
+	                if (value === this['_' + name]) {
+	                    return;
+	                }
+	                this['_' + name] = value;
+	                this['set' + name.slice(0, 1).toUpperCase() + name.slice(1)](value);
+	            }
+	        });
+	    }
+
+	    ['fillStyle', 'strokeStyle', 'lineWidth', 'globalAlpha'].forEach(defineProperty);
+
+	    Canvas.prototype.translate = function (x, y) {
+	        this._matrix[6] = this._matrix[0] * x + this._matrix[3] * y + this._matrix[6];
+	        this._matrix[7] = this._matrix[1] * x + this._matrix[4] * y + this._matrix[7];
+	    };
+
+	    Canvas.prototype.rotate = function (angle) {
+	        var sina = Math.sin(angle);
+	        var cosa = Math.cos(angle);
+	        var m00 = this._matrix[0];
+	        this._matrix[0] = m00 * cosa + this._matrix[3] * sina;
+	        this._matrix[3] = m00 * -sina + this._matrix[3] * cosa;
+	        
+	        var m01 = this._matrix[1];
+	        this._matrix[1] = m01 * cosa + this._matrix[4] * sina;
+	        this._matrix[4] = m01 * -sina + this._matrix[4] * cosa;
+	    };
+
+	    Canvas.prototype.scale = function (x, y) {
+	        this._matrix[0] *= x;
+	        this._matrix[1] *= x;
+	        this._matrix[3] *= y;
+	        this._matrix[4] *= y;
+	    };
+
+	    Canvas.prototype.transform = function (m11, m12, m21, m22, dx, dy) {
+	        this._matrix = [
+	            this._matrix[0] * m11 + this._matrix[3] * m21,
+	            this._matrix[1] * m11 + this._matrix[4] * m21,
+	            this._matrix[2] * m11 + this._matrix[5] * m21,
+	            this._matrix[0] * m12 + this._matrix[3] * m22,
+	            this._matrix[1] * m12 + this._matrix[4] * m22,
+	            this._matrix[2] * m12 + this._matrix[5] * m22,
+	            this._matrix[0] * dx + this._matrix[3] * dy + this._matrix[6],
+	            this._matrix[1] * dx + this._matrix[4] * dy + this._matrix[7],
+	            this._matrix[2] * dx + this._matrix[5] * dy + this._matrix[8]
+	        ];
+	    };
+
+	    Canvas.prototype.setTransform = function (m11, m12, m21, m22, dx, dy) {
+	        this._matrix = [m11, m21, 0, m12, m22, 0, dx, dy, 1];
+	    };
+
+	    Canvas.prototype.resetTransform = function () {
+	        this._matrix = [1, 0, 0, 0, 1, 0, 0, 0, 1];
+	    };
+
+	    Canvas.prototype.drawImage = function (img, sx, sy, sw, sh, dx, dy, dw, dh) {
+	        if (arguments.length === 3) {
+	            dw = img.width;
+	            dh = img.height;
+	            dx = sx;
+	            dy = sy;
+	            sx = 0;
+	            sy = 0;
+	            sw = dw;
+	            sh = dh;
+	        }
+	        if (arguments.length === 5) {
+	            dx = sx;
+	            dy = sy;
+	            dw = sw;
+	            dh = sh;
+	            sx = 0;
+	            sy = 0;
+	            sw = img.width;
+	            sh = img.height;
+	        }
+	        var drawParams = [sx, sy, sw, sh, dx, dy, dw, dh];
+
+	        var url = typeof img === 'string' ? img : img.src;
+	        if (!url) {
+	            console.warn('drawImage: the img is null');
+	            return;
+	        }
+
+
+	        if (this._matrix.join('') !== '100010001') {
+	            drawParams = drawParams.concat(this._matrix);
+	        }
+	        if (this._lastDrawParams && this._lastDrawParams[0] === url) {
+	            this._lastDrawParams[1].push(drawParams);
+	        } else {
+	            if (this._lastDrawParams) {
+	                this.drawActionList.push(['drawImages', this._lastDrawParams]);
+	            }
+	            this._lastDrawParams = [url, [drawParams]];
+	        }
+	    }
+
+	    Canvas.prototype.save = function () {
+	        this._stack.push({
+	            matrix: this._matrix.slice(),
+	            fillStyle: this._fillStyle,
+	            strokeStyle: this._strokeStyle,
+	            lineWidth: this._lineWidth,
+	            globalAlpha: this._globalAlpha
+	        });
+	    }
+
+	    Canvas.prototype.restore = function () {
+	        var data = this._stack.pop();
+	        this._matrix = data.matrix;
+	        this.fillStyle = data.fillStyle;
+	        this.strokeStyle = data.strokeStyle;
+	        this.lineWidth = data.lineWidth;
+	        this.globalAlpha = data.globalAlpha;
+	    }
+
+	    Canvas.prototype._pushDrawImages = function () {
+	        if (this._lastDrawParams) {
+	            this.drawActionList.push(['drawImages', this._lastDrawParams]);
+	            this._lastDrawParams = null;
+	        }
+	    }
+
+	    Canvas.prototype.draw = function() {
+	        this._pushDrawImages();
+	        weexCanvasModule.addDrawActions(this.elemRef, this.drawActionList);
+	        this.drawActionList = [];
+	    }
+
+	    var notSupportAPIList = [
+	        'fill',
+	        'clip',
+	        'quadraticCurveTo',
+	        'bezierCurveTo',
+	        'arcTo',
+	        'rect',
+	        'isPointInPath',
+	        'fillText',
+	        'strokeText',
+	        'measureText',
+	        'createImageData',
+	        'getImageData',
+	        'putImageData'
+	    ];
+	    notSupportAPIList.forEach(function (api) {
+	        Canvas.prototype[api] = function () {
+	            console.warn(api + ' is not support now!');
+	        };
+	    });
+
+
+	    Canvas.getContext = function (elemRef) {
+	        if (typeof elemRef !== 'string') {
+	            elemRef = elemRef.ref;
+	        }
+	        return new Canvas(elemRef);
+	    };
+
+	    Object.defineProperty(Object.prototype, 'getContext', {
+	        writable: true,
+	        enumberable: false,
+	        value: function (type) {
+	            if (!this.ref || this.type !== 'canvas') {
+	                return;
+	            }
+	            return new Canvas(this.ref);
+	        }
+	    });
+
+	    return Canvas;
+	}
+
+	if (typeof CanvasRenderingContext2D === 'undefined') {
+	    __weex_module__.exports = initCanvas();
+	} else {
+	    __weex_module__.exports = CanvasRenderingContext2D;
+	}
+	})
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	;__weex_define__("@weex-component/util", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	var requireWeexModule = function () {
+	    var cache = {};
+	    var id = 0;
+	    return function (name) {
+	        if (cache[name]) {
+	            return cache[name];
+	        }
+
+	        __weex_define__('@weex-temp/x_' + id++, function (__weex_require__) {
+	            cache[name] = __weex_require__('@weex-module/' + name);
+	        });
+	        return cache[name];
+	    };
+	}();
+
+	exports.requireWeexModule = requireWeexModule;
+	})
+
+/***/ },
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;;__weex_define__("@weex-component/jquery", [], function(__weex_require__, __weex_exports__, __weex_module__){

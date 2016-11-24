@@ -1708,7 +1708,7 @@
 	exports.guides = {
 	  '11': {
 	    title: '连接到 WiFi',
-	    content: '&lt;h1 id="iph1b489c85f" style="font-size:1.9rem;font-family:HelveticaNeue-Light, &quot;font-weight:400;color:#4B4B4B;background-color:#FFFFFF;"&gt;连接到无线局域网&lt;/h1&gt;'
+	    content: '连接到无线局域网'
 	  },
 	  '12': {
 	    title: '连接到互联网',
