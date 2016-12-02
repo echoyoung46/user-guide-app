@@ -6,7 +6,6 @@
       <div>
           <video class="video" auto-play="true" src="/src/audio/alone.mp3" style="width:500;height:500;"></video>
       </div>
-       <canvas style="width:250;height:250;" id="canvas"></canvas>
     </div>
   </div>
 </template>
@@ -22,7 +21,6 @@
 <script>
   require('weex-components');
   var $ = require('jquery');
-  var Canvas = require('weex-canvas');
 
   var navigator = require('@weex-module/navigator');
   var apis = require('../common/api');
@@ -53,7 +51,6 @@
         });
       });
 
-      console.log(Canvas);
     },
     methods: {
       
