@@ -44,7 +44,8 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	;__weex_define__("@weex-component/e77ddfbf9f8aa57a39cdf4deb398a543", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/6d8b2c208b762527453235fab5d02022", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	__webpack_require__(20);
 
 	;
 	  __webpack_require__(4);
@@ -68,7 +69,7 @@
 
 	      var div = $('<div>')[0];
 	      div.innerHTML = data.guides[this.contentId].content;
-	      console.log(div.innerText);
+	      
 	      this.content = div.innerText;
 	      this.$on('naviBar.leftItem.click',function(e){
 	        var params = {
@@ -88,6 +89,9 @@
 	;__weex_module__.exports.template = __weex_module__.exports.template || {}
 	;Object.assign(__weex_module__.exports.template, {
 	  "type": "div",
+	  "classList": [
+	    "guide-detail"
+	  ],
 	  "children": [
 	    {
 	      "type": "wxc-navpage",
@@ -101,50 +105,26 @@
 	      }
 	    },
 	    {
-	      "type": "div",
+	      "type": "guide-slider",
 	      "classList": [
-	        "guide-content"
-	      ],
-	      "children": [
-	        {
-	          "type": "text",
-	          "attr": {
-	            "value": function () {return this.content}
-	          }
-	        },
-	        {
-	          "type": "div",
-	          "children": [
-	            {
-	              "type": "video",
-	              "classList": [
-	                "video"
-	              ],
-	              "attr": {
-	                "autoPlay": "true",
-	                "src": "/src/audio/alone.mp3"
-	              },
-	              "style": {
-	                "width": 500,
-	                "height": 500
-	              }
-	            }
-	          ]
-	        }
+	        "guide-slider"
 	      ]
 	    }
 	  ]
 	})
 	;__weex_module__.exports.style = __weex_module__.exports.style || {}
 	;Object.assign(__weex_module__.exports.style, {
-	  "guide-content": {
+	  "guide-detail": {
+	    "overflow": "hidden"
+	  },
+	  "guide-slider": {
 	    "top": 88,
 	    "padding": 20,
 	    "lineHeight": 50
 	  }
 	})
 	})
-	;__weex_bootstrap__("@weex-component/e77ddfbf9f8aa57a39cdf4deb398a543", {
+	;__weex_bootstrap__("@weex-component/6d8b2c208b762527453235fab5d02022", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 
@@ -11689,6 +11669,83 @@
 	return jQuery;
 	} );
 
+	})
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	;__weex_define__("@weex-component/guide-slider", [], function(__weex_require__, __weex_exports__, __weex_module__){
+
+	;
+	  __weex_module__.exports = {
+	    data: function () {return {
+	      imageList: [{src: 'src/assets/time/1.jpg'},{src: 'src/assets/time/2.jpg'},{src: 'src/assets/time/3.jpg'}]
+	    }},
+	    methods: {
+	      change: function(e) {
+	        console.log(e.index);
+	      }
+	    }
+	  }
+
+	;__weex_module__.exports.template = __weex_module__.exports.template || {}
+	;Object.assign(__weex_module__.exports.template, {
+	  "type": "div",
+	  "classList": [
+	    "container"
+	  ],
+	  "children": [
+	    {
+	      "type": "slider",
+	      "classList": [
+	        "slider-container"
+	      ],
+	      "attr": {
+	        "autoPlay": "false"
+	      },
+	      "events": {
+	        "change": "change"
+	      },
+	      "children": [
+	        {
+	          "type": "div",
+	          "classList": [
+	            "slider-item"
+	          ],
+	          "repeat": function () {return this.imageList},
+	          "children": [
+	            {
+	              "type": "image",
+	              "classList": [
+	                "slider-image"
+	              ],
+	              "attr": {
+	                "src": function () {return this.src}
+	              }
+	            }
+	          ]
+	        }
+	      ]
+	    }
+	  ]
+	})
+	;__weex_module__.exports.style = __weex_module__.exports.style || {}
+	;Object.assign(__weex_module__.exports.style, {
+	  "slider-container": {
+	    "width": 3000,
+	    "height": 1335,
+	    "flexDirection": "column"
+	  },
+	  "slider-item": {
+	    "width": 710,
+	    "height": 1335
+	  },
+	  "slider-image": {
+	    "width": 710,
+	    "height": 1335
+	  }
+	})
 	})
 
 /***/ }

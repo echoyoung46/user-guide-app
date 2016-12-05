@@ -1,0 +1,43 @@
+<template>
+  <div class="container">
+    <slider class="slider-container" auto-play="false" onchange="change">
+      <div class="slider-item" repeat="{{imageList}}" onclick="">
+        <image class="slider-image" src="{{src}}"></image>
+      </div>
+      <!--<indicator></indicator>-->
+    </slider>
+  </div>
+</template>
+
+<style>
+/*.container{
+  width: 750;
+  overflow: hidden;
+}*/
+.slider-container{
+  width: 3000;
+  height: 1335;
+  flex-direction: column;
+}
+.slider-item{
+  width: 710;
+  height: 1335;
+}
+.slider-image{
+  width: 710;
+  height: 1335;
+}
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      imageList: [{src: 'src/assets/time/1.jpg'},{src: 'src/assets/time/2.jpg'},{src: 'src/assets/time/3.jpg'}]
+    },
+    methods: {
+      change: function(e) {
+        console.log(e.index);
+      }
+    }
+  }
+</script>

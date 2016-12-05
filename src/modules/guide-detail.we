@@ -1,17 +1,21 @@
 <template>
-  <div>
+  <div class="guide-detail">
     <wxc-navpage data-role="none" background-color="#0dbbf2" title="{{pageTitle}}" title-color="#fff" left-item-src="/src/images/back-icon.svg" left-item-color="  #fff"></wxc-navpage>
-    <div class="guide-content">
+    <!--<div class="guide-content">
       <text>{{content}}</text>
       <div>
           <video class="video" auto-play="true" src="/src/audio/alone.mp3" style="width:500;height:500;"></video>
       </div>
-    </div>
+    </div>-->
+    <guide-slider class="guide-slider"></guide-slider>
   </div>
 </template>
 
 <style>
-  .guide-content{
+  .guide-detail{
+    overflow: hidden;
+  }
+  .guide-slider{
     top: 88;
     padding: 20;
     line-height: 50;
@@ -40,7 +44,7 @@
 
       var div = $('<div>')[0];
       div.innerHTML = data.guides[this.contentId].content;
-      console.log(div.innerText);
+      
       this.content = div.innerText;
       this.$on('naviBar.leftItem.click',function(e){
         var params = {
