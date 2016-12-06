@@ -1,0 +1,61 @@
+<template>
+  <div class="audio-container">
+    <div class="control-panel">
+      <img src="/src/images/{{playsrc}}.svg" alt="" class="control-icon" onclick="togglePlay">
+    </div>
+    <div class="video-container">
+      <video id="videoMedia" class="video" auto-play="false" play-status="{{playStatus}}" src="{{src}}"></video>
+    </div>
+  </div>
+</template>
+
+<style>
+.audio-container{
+  height: 100;
+}
+.control-panel{
+  border: 1px #707070 solid;
+}
+.control-icon{
+  width: 60;
+  height: 60;
+  background-size: cover;
+  text-align: center;
+  position: absolute;
+  top: 40;
+  left: 125;
+  margin-left: -50;
+}
+.video-container{
+  display: none;
+}
+</style>
+
+<script>
+
+module.exports = {
+  data: {
+    isPlay: false,
+    playStatus: 'pause',
+    playsrc: 'play-icon'
+  },
+  methods: {
+    togglePlay: function() {
+      this.isPlay = !this.isPlay;
+      this.playStatus = this.isPlay ? 'play' : 'pause';
+      this.playsrc = this.isPlay ? 'pause-icon' : 'play-icon';
+      console.log(this.isPlay);
+      
+      // if( this.isPlay ) {
+      //   $video.play();
+      // }else {
+      //   $video.pause();
+      // }
+    }
+  },
+  ready: function() {
+    var $video = this.$el('videoMedia');
+    console.log($video);
+  }
+}
+</script>

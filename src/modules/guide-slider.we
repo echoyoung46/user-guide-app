@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    <slider class="slider-container" auto-play="false" onchange="change">
-      <div class="slider-item" repeat="{{imageList}}" onclick="">
+    <slider id="slider-container" class="slider-container" auto-play="false" onchange="change">
+      <div class="slider-item" repeat="{{imageList}}" onclick="slideToNext">
         <image class="slider-image" src="{{src}}"></image>
       </div>
-      <!--<indicator></indicator>-->
+      <!--<indicator id="slider-indicator"></indicator>-->
     </slider>
   </div>
 </template>
@@ -27,6 +27,10 @@
   width: 710;
   height: 1335;
 }
+.slider-indicator{
+  position: absolute;
+  top: 300;
+}
 </style>
 
 <script>
@@ -36,8 +40,14 @@
     },
     methods: {
       change: function(e) {
-        console.log(e.index);
+        // console.log(e.index);
+      },
+      slideToNext: function(e) {
+        // console.log(e);
       }
+    },
+    ready: function() {
+      // console.log(this.$el('slider-container'));
     }
   }
 </script>

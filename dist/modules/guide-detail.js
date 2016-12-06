@@ -44,12 +44,13 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	;__weex_define__("@weex-component/6d8b2c208b762527453235fab5d02022", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/8e433686edcb41f94cc4b5e589f375c9", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	__webpack_require__(19);
 	__webpack_require__(20);
 
 	;
 	  __webpack_require__(4);
-	  var $ = __webpack_require__(19);
+	  var $ = __webpack_require__(21);
 
 	  var navigator = __weex_require__('@weex-module/navigator');
 	  var apis = __webpack_require__(16);
@@ -105,6 +106,15 @@
 	      }
 	    },
 	    {
+	      "type": "weex-audio",
+	      "attr": {
+	        "src": "src/audio/alone.mp3"
+	      },
+	      "classList": [
+	        "audio-container"
+	      ]
+	    },
+	    {
 	      "type": "guide-slider",
 	      "classList": [
 	        "guide-slider"
@@ -117,6 +127,9 @@
 	  "guide-detail": {
 	    "overflow": "hidden"
 	  },
+	  "audio-container": {
+	    "top": 70
+	  },
 	  "guide-slider": {
 	    "top": 88,
 	    "padding": 20,
@@ -124,7 +137,7 @@
 	  }
 	})
 	})
-	;__weex_bootstrap__("@weex-component/6d8b2c208b762527453235fab5d02022", {
+	;__weex_bootstrap__("@weex-component/8e433686edcb41f94cc4b5e589f375c9", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 
@@ -1445,6 +1458,205 @@
 /***/ },
 /* 18 */,
 /* 19 */
+/***/ function(module, exports) {
+
+	;__weex_define__("@weex-component/weex-audio", [], function(__weex_require__, __weex_exports__, __weex_module__){
+
+	;
+
+	__weex_module__.exports = {
+	  data: function () {return {
+	    isPlay: false,
+	    playStatus: 'pause',
+	    playsrc: 'play-icon'
+	  }},
+	  methods: {
+	    togglePlay: function() {
+	      this.isPlay = !this.isPlay;
+	      this.playStatus = this.isPlay ? 'play' : 'pause';
+	      this.playsrc = this.isPlay ? 'pause-icon' : 'play-icon';
+	      console.log(this.isPlay);
+	      
+	      // if( this.isPlay ) {
+	      //   $video.play();
+	      // }else {
+	      //   $video.pause();
+	      // }
+	    }
+	  },
+	  ready: function() {
+	    var $video = this.$el('videoMedia');
+	    console.log($video);
+	  }
+	}
+
+	;__weex_module__.exports.template = __weex_module__.exports.template || {}
+	;Object.assign(__weex_module__.exports.template, {
+	  "type": "div",
+	  "classList": [
+	    "audio-container"
+	  ],
+	  "children": [
+	    {
+	      "type": "div",
+	      "classList": [
+	        "control-panel"
+	      ],
+	      "children": [
+	        {
+	          "type": "image",
+	          "attr": {
+	            "src": function () {return '/src/images/' + (this.playsrc) + '.svg'},
+	            "alt": ""
+	          },
+	          "classList": [
+	            "control-icon"
+	          ],
+	          "events": {
+	            "click": "togglePlay"
+	          }
+	        }
+	      ]
+	    },
+	    {
+	      "type": "div",
+	      "classList": [
+	        "video-container"
+	      ],
+	      "children": [
+	        {
+	          "type": "video",
+	          "id": "videoMedia",
+	          "classList": [
+	            "video"
+	          ],
+	          "attr": {
+	            "autoPlay": "false",
+	            "playStatus": function () {return this.playStatus},
+	            "src": function () {return this.src}
+	          }
+	        }
+	      ]
+	    }
+	  ]
+	})
+	;__weex_module__.exports.style = __weex_module__.exports.style || {}
+	;Object.assign(__weex_module__.exports.style, {
+	  "audio-container": {
+	    "height": 100
+	  },
+	  "control-panel": {
+	    "border": "1px #707070 solid"
+	  },
+	  "control-icon": {
+	    "width": 60,
+	    "height": 60,
+	    "backgroundSize": "cover",
+	    "textAlign": "center",
+	    "position": "absolute",
+	    "top": 40,
+	    "left": 125,
+	    "marginLeft": -50
+	  },
+	  "video-container": {
+	    "display": "none"
+	  }
+	})
+	})
+
+/***/ },
+/* 20 */
+/***/ function(module, exports) {
+
+	;__weex_define__("@weex-component/guide-slider", [], function(__weex_require__, __weex_exports__, __weex_module__){
+
+	;
+	  __weex_module__.exports = {
+	    data: function () {return {
+	      imageList: [{src: 'src/assets/time/1.jpg'},{src: 'src/assets/time/2.jpg'},{src: 'src/assets/time/3.jpg'}]
+	    }},
+	    methods: {
+	      change: function(e) {
+	        // console.log(e.index);
+	      },
+	      slideToNext: function(e) {
+	        // console.log(e);
+	      }
+	    },
+	    ready: function() {
+	      // console.log(this.$el('slider-container'));
+	    }
+	  }
+
+	;__weex_module__.exports.template = __weex_module__.exports.template || {}
+	;Object.assign(__weex_module__.exports.template, {
+	  "type": "div",
+	  "classList": [
+	    "container"
+	  ],
+	  "children": [
+	    {
+	      "type": "slider",
+	      "id": "slider-container",
+	      "classList": [
+	        "slider-container"
+	      ],
+	      "attr": {
+	        "autoPlay": "false"
+	      },
+	      "events": {
+	        "change": "change"
+	      },
+	      "children": [
+	        {
+	          "type": "div",
+	          "classList": [
+	            "slider-item"
+	          ],
+	          "repeat": function () {return this.imageList},
+	          "events": {
+	            "click": "slideToNext"
+	          },
+	          "children": [
+	            {
+	              "type": "image",
+	              "classList": [
+	                "slider-image"
+	              ],
+	              "attr": {
+	                "src": function () {return this.src}
+	              }
+	            }
+	          ]
+	        }
+	      ]
+	    }
+	  ]
+	})
+	;__weex_module__.exports.style = __weex_module__.exports.style || {}
+	;Object.assign(__weex_module__.exports.style, {
+	  "slider-container": {
+	    "width": 3000,
+	    "height": 1335,
+	    "flexDirection": "column"
+	  },
+	  "slider-item": {
+	    "width": 710,
+	    "height": 1335
+	  },
+	  "slider-image": {
+	    "width": 710,
+	    "height": 1335
+	  },
+	  "slider-indicator": {
+	    "position": "absolute",
+	    "top": 300
+	  }
+	})
+	})
+
+/***/ },
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;;__weex_define__("@weex-component/jquery", [], function(__weex_require__, __weex_exports__, __weex_module__){
@@ -11669,83 +11881,6 @@
 	return jQuery;
 	} );
 
-	})
-
-/***/ },
-/* 20 */
-/***/ function(module, exports) {
-
-	;__weex_define__("@weex-component/guide-slider", [], function(__weex_require__, __weex_exports__, __weex_module__){
-
-	;
-	  __weex_module__.exports = {
-	    data: function () {return {
-	      imageList: [{src: 'src/assets/time/1.jpg'},{src: 'src/assets/time/2.jpg'},{src: 'src/assets/time/3.jpg'}]
-	    }},
-	    methods: {
-	      change: function(e) {
-	        console.log(e.index);
-	      }
-	    }
-	  }
-
-	;__weex_module__.exports.template = __weex_module__.exports.template || {}
-	;Object.assign(__weex_module__.exports.template, {
-	  "type": "div",
-	  "classList": [
-	    "container"
-	  ],
-	  "children": [
-	    {
-	      "type": "slider",
-	      "classList": [
-	        "slider-container"
-	      ],
-	      "attr": {
-	        "autoPlay": "false"
-	      },
-	      "events": {
-	        "change": "change"
-	      },
-	      "children": [
-	        {
-	          "type": "div",
-	          "classList": [
-	            "slider-item"
-	          ],
-	          "repeat": function () {return this.imageList},
-	          "children": [
-	            {
-	              "type": "image",
-	              "classList": [
-	                "slider-image"
-	              ],
-	              "attr": {
-	                "src": function () {return this.src}
-	              }
-	            }
-	          ]
-	        }
-	      ]
-	    }
-	  ]
-	})
-	;__weex_module__.exports.style = __weex_module__.exports.style || {}
-	;Object.assign(__weex_module__.exports.style, {
-	  "slider-container": {
-	    "width": 3000,
-	    "height": 1335,
-	    "flexDirection": "column"
-	  },
-	  "slider-item": {
-	    "width": 710,
-	    "height": 1335
-	  },
-	  "slider-image": {
-	    "width": 710,
-	    "height": 1335
-	  }
-	})
 	})
 
 /***/ }
