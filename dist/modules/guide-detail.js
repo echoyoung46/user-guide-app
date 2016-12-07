@@ -44,8 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	;__weex_define__("@weex-component/8e433686edcb41f94cc4b5e589f375c9", [], function(__weex_require__, __weex_exports__, __weex_module__){
-	__webpack_require__(19);
+	;__weex_define__("@weex-component/5b4a62af3fd56d0506961d96dbd5e3d5", [], function(__weex_require__, __weex_exports__, __weex_module__){
 	__webpack_require__(20);
 
 	;
@@ -63,23 +62,23 @@
 	      content: ''
 	    }},
 	    created: function() {
-	      var bundleUrl = this.$getConfig().bundleUrl;
+	      // var bundleUrl = this.$getConfig().bundleUrl;
 	      
-	      this.contentId = apis.getParameterByName('id', bundleUrl);
-	      this.pageTitle = data.guides[this.contentId].title;
+	      // this.contentId = apis.getParameterByName('id', bundleUrl);
+	      // this.pageTitle = data.guides[this.contentId].title;
 
-	      var div = $('<div>')[0];
-	      div.innerHTML = data.guides[this.contentId].content;
+	      // var div = $('<div>')[0];
+	      // div.innerHTML = data.guides[this.contentId].content;
 	      
-	      this.content = div.innerText;
-	      this.$on('naviBar.leftItem.click',function(e){
-	        var params = {
-	            'animated' : 'true',
-	        }
-	        navigator.pop(params, function(e) {
-	            //callback
-	        });
-	      });
+	      // this.content = div.innerText;
+	      // this.$on('naviBar.leftItem.click',function(e){
+	      //   var params = {
+	      //       'animated' : 'true',
+	      //   }
+	      //   navigator.pop(params, function(e) {
+	      //       //callback
+	      //   });
+	      // });
 
 	    },
 	    methods: {
@@ -106,12 +105,39 @@
 	      }
 	    },
 	    {
-	      "type": "weex-audio",
-	      "attr": {
-	        "src": "src/audio/alone.mp3"
-	      },
+	      "type": "div",
 	      "classList": [
-	        "audio-container"
+	        "guide-content"
+	      ],
+	      "children": [
+	        {
+	          "type": "text",
+	          "attr": {
+	            "value": function () {return this.content}
+	          }
+	        },
+	        {
+	          "type": "div",
+	          "classList": [
+	            "video-container"
+	          ],
+	          "children": [
+	            {
+	              "type": "video",
+	              "classList": [
+	                "video"
+	              ],
+	              "attr": {
+	                "autoPlay": "false",
+	                "src": "/src/audio/alone.mp3"
+	              },
+	              "style": {
+	                "width": 500,
+	                "height": 15
+	              }
+	            }
+	          ]
+	        }
 	      ]
 	    },
 	    {
@@ -134,10 +160,13 @@
 	    "top": 88,
 	    "padding": 20,
 	    "lineHeight": 50
+	  },
+	  "video-container": {
+	    "top": 100
 	  }
 	})
 	})
-	;__weex_bootstrap__("@weex-component/8e433686edcb41f94cc4b5e589f375c9", {
+	;__weex_bootstrap__("@weex-component/5b4a62af3fd56d0506961d96dbd5e3d5", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 
@@ -1457,114 +1486,7 @@
 
 /***/ },
 /* 18 */,
-/* 19 */
-/***/ function(module, exports) {
-
-	;__weex_define__("@weex-component/weex-audio", [], function(__weex_require__, __weex_exports__, __weex_module__){
-
-	;
-
-	__weex_module__.exports = {
-	  data: function () {return {
-	    isPlay: false,
-	    playStatus: 'pause',
-	    playsrc: 'play-icon'
-	  }},
-	  methods: {
-	    togglePlay: function() {
-	      this.isPlay = !this.isPlay;
-	      this.playStatus = this.isPlay ? 'play' : 'pause';
-	      this.playsrc = this.isPlay ? 'pause-icon' : 'play-icon';
-	      console.log(this.isPlay);
-	      
-	      // if( this.isPlay ) {
-	      //   $video.play();
-	      // }else {
-	      //   $video.pause();
-	      // }
-	    }
-	  },
-	  ready: function() {
-	    var $video = this.$el('videoMedia');
-	    console.log($video);
-	  }
-	}
-
-	;__weex_module__.exports.template = __weex_module__.exports.template || {}
-	;Object.assign(__weex_module__.exports.template, {
-	  "type": "div",
-	  "classList": [
-	    "audio-container"
-	  ],
-	  "children": [
-	    {
-	      "type": "div",
-	      "classList": [
-	        "control-panel"
-	      ],
-	      "children": [
-	        {
-	          "type": "image",
-	          "attr": {
-	            "src": function () {return '/src/images/' + (this.playsrc) + '.svg'},
-	            "alt": ""
-	          },
-	          "classList": [
-	            "control-icon"
-	          ],
-	          "events": {
-	            "click": "togglePlay"
-	          }
-	        }
-	      ]
-	    },
-	    {
-	      "type": "div",
-	      "classList": [
-	        "video-container"
-	      ],
-	      "children": [
-	        {
-	          "type": "video",
-	          "id": "videoMedia",
-	          "classList": [
-	            "video"
-	          ],
-	          "attr": {
-	            "autoPlay": "false",
-	            "playStatus": function () {return this.playStatus},
-	            "src": function () {return this.src}
-	          }
-	        }
-	      ]
-	    }
-	  ]
-	})
-	;__weex_module__.exports.style = __weex_module__.exports.style || {}
-	;Object.assign(__weex_module__.exports.style, {
-	  "audio-container": {
-	    "height": 100
-	  },
-	  "control-panel": {
-	    "border": "1px #707070 solid"
-	  },
-	  "control-icon": {
-	    "width": 60,
-	    "height": 60,
-	    "backgroundSize": "cover",
-	    "textAlign": "center",
-	    "position": "absolute",
-	    "top": 40,
-	    "left": 125,
-	    "marginLeft": -50
-	  },
-	  "video-container": {
-	    "display": "none"
-	  }
-	})
-	})
-
-/***/ },
+/* 19 */,
 /* 20 */
 /***/ function(module, exports) {
 
@@ -1573,7 +1495,7 @@
 	;
 	  __weex_module__.exports = {
 	    data: function () {return {
-	      imageList: [{src: 'src/assets/time/1.jpg'},{src: 'src/assets/time/2.jpg'},{src: 'src/assets/time/3.jpg'}]
+	      imageList: [{src: 'src/assets/time/3.jpg', style: 'border: 2px solid #ff0000; position: absolute; width: 100; height: 50; top: 100; left: 300;'},{src: 'src/assets/time/2.jpg', style: 'border: 2px solid #ff0000; position: absolute; width: 100; height: 50; top: 100; left: 300;'},{src: 'src/assets/time/1.jpg', style: 'border: 2px solid #ff0000; position: absolute; width: 100; height: 50; top: 100; left: 300;'}]
 	    }},
 	    methods: {
 	      change: function(e) {
@@ -1596,7 +1518,7 @@
 	  ],
 	  "children": [
 	    {
-	      "type": "slider",
+	      "type": "list",
 	      "id": "slider-container",
 	      "classList": [
 	        "slider-container"
@@ -1609,7 +1531,8 @@
 	      },
 	      "children": [
 	        {
-	          "type": "div",
+	          "type": "cell",
+	          "append": "tree",
 	          "classList": [
 	            "slider-item"
 	          ],
@@ -1626,6 +1549,13 @@
 	              "attr": {
 	                "src": function () {return this.src}
 	              }
+	            },
+	            {
+	              "type": "div",
+	              "classList": [
+	                "hint-point"
+	              ],
+	              "style": {}
 	            }
 	          ]
 	        }
@@ -1635,6 +1565,9 @@
 	})
 	;__weex_module__.exports.style = __weex_module__.exports.style || {}
 	;Object.assign(__weex_module__.exports.style, {
+	  "container": {
+	    "position": "relative"
+	  },
 	  "slider-container": {
 	    "width": 3000,
 	    "height": 1335,
@@ -1642,12 +1575,15 @@
 	  },
 	  "slider-item": {
 	    "width": 710,
-	    "height": 1335
+	    "position": "absolute",
+	    "top": 0
 	  },
 	  "slider-image": {
 	    "width": 710,
-	    "height": 1335
+	    "height": 1335,
+	    "position": "relative"
 	  },
+	  "hint-point": {},
 	  "slider-indicator": {
 	    "position": "absolute",
 	    "top": 300

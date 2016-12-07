@@ -1,13 +1,13 @@
 <template>
   <div class="guide-detail">
     <wxc-navpage data-role="none" background-color="#0dbbf2" title="{{pageTitle}}" title-color="#fff" left-item-src="/src/images/back-icon.svg" left-item-color="  #fff"></wxc-navpage>
-    <!--<div class="guide-content">
+    <div class="guide-content">
       <text>{{content}}</text>
-      <div>
-          <video class="video" auto-play="true" src="/src/audio/alone.mp3" style="width:500;height:500;"></video>
+      <div class="video-container">
+          <video class="video" auto-play="false" src="/src/audio/alone.mp3" style="width:500;height:15;"></video>
       </div>
-    </div>-->
-    <weex-audio src="src/audio/alone.mp3" class="audio-container"></weex-audio>
+    </div>
+    <!--<weex-audio src="src/audio/alone.mp3" class="audio-container"></weex-audio>-->
     <guide-slider class="guide-slider"></guide-slider>
   </div>
 </template>
@@ -23,6 +23,9 @@
     top: 88;
     padding: 20;
     line-height: 50;
+  }
+  .video-container{
+    top: 100;
   }
 </style>
 
@@ -41,23 +44,23 @@
       content: ''
     },
     created: function() {
-      var bundleUrl = this.$getConfig().bundleUrl;
+      // var bundleUrl = this.$getConfig().bundleUrl;
       
-      this.contentId = apis.getParameterByName('id', bundleUrl);
-      this.pageTitle = data.guides[this.contentId].title;
+      // this.contentId = apis.getParameterByName('id', bundleUrl);
+      // this.pageTitle = data.guides[this.contentId].title;
 
-      var div = $('<div>')[0];
-      div.innerHTML = data.guides[this.contentId].content;
+      // var div = $('<div>')[0];
+      // div.innerHTML = data.guides[this.contentId].content;
       
-      this.content = div.innerText;
-      this.$on('naviBar.leftItem.click',function(e){
-        var params = {
-            'animated' : 'true',
-        }
-        navigator.pop(params, function(e) {
-            //callback
-        });
-      });
+      // this.content = div.innerText;
+      // this.$on('naviBar.leftItem.click',function(e){
+      //   var params = {
+      //       'animated' : 'true',
+      //   }
+      //   navigator.pop(params, function(e) {
+      //       //callback
+      //   });
+      // });
 
     },
     methods: {

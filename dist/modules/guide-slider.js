@@ -44,12 +44,12 @@
 /* 0 */
 /***/ function(module, exports) {
 
-	;__weex_define__("@weex-component/0f096dff2b47e4dbb93eba18d0c275f4", [], function(__weex_require__, __weex_exports__, __weex_module__){
+	;__weex_define__("@weex-component/4219139e96b2498d81d9c673c2982272", [], function(__weex_require__, __weex_exports__, __weex_module__){
 
 	;
 	  __weex_module__.exports = {
 	    data: function () {return {
-	      imageList: [{src: 'src/assets/time/1.jpg'},{src: 'src/assets/time/2.jpg'},{src: 'src/assets/time/3.jpg'}]
+	      imageList: [{src: 'src/assets/time/3.jpg', style: 'border: 2px solid #ff0000; position: absolute; width: 100; height: 50; top: 100; left: 300;'},{src: 'src/assets/time/2.jpg', style: 'border: 2px solid #ff0000; position: absolute; width: 100; height: 50; top: 100; left: 300;'},{src: 'src/assets/time/1.jpg', style: 'border: 2px solid #ff0000; position: absolute; width: 100; height: 50; top: 100; left: 300;'}]
 	    }},
 	    methods: {
 	      change: function(e) {
@@ -72,7 +72,7 @@
 	  ],
 	  "children": [
 	    {
-	      "type": "slider",
+	      "type": "list",
 	      "id": "slider-container",
 	      "classList": [
 	        "slider-container"
@@ -85,7 +85,8 @@
 	      },
 	      "children": [
 	        {
-	          "type": "div",
+	          "type": "cell",
+	          "append": "tree",
 	          "classList": [
 	            "slider-item"
 	          ],
@@ -102,6 +103,13 @@
 	              "attr": {
 	                "src": function () {return this.src}
 	              }
+	            },
+	            {
+	              "type": "div",
+	              "classList": [
+	                "hint-point"
+	              ],
+	              "style": {}
 	            }
 	          ]
 	        }
@@ -111,6 +119,9 @@
 	})
 	;__weex_module__.exports.style = __weex_module__.exports.style || {}
 	;Object.assign(__weex_module__.exports.style, {
+	  "container": {
+	    "position": "relative"
+	  },
 	  "slider-container": {
 	    "width": 3000,
 	    "height": 1335,
@@ -118,19 +129,22 @@
 	  },
 	  "slider-item": {
 	    "width": 710,
-	    "height": 1335
+	    "position": "absolute",
+	    "top": 0
 	  },
 	  "slider-image": {
 	    "width": 710,
-	    "height": 1335
+	    "height": 1335,
+	    "position": "relative"
 	  },
+	  "hint-point": {},
 	  "slider-indicator": {
 	    "position": "absolute",
 	    "top": 300
 	  }
 	})
 	})
-	;__weex_bootstrap__("@weex-component/0f096dff2b47e4dbb93eba18d0c275f4", {
+	;__weex_bootstrap__("@weex-component/4219139e96b2498d81d9c673c2982272", {
 	  "transformerVersion": "0.3.1"
 	},undefined)
 
