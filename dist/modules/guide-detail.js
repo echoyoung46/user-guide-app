@@ -45,11 +45,11 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	;__weex_define__("@weex-component/5b4a62af3fd56d0506961d96dbd5e3d5", [], function(__weex_require__, __weex_exports__, __weex_module__){
-	__webpack_require__(20);
+	__webpack_require__(19);
 
 	;
 	  __webpack_require__(4);
-	  var $ = __webpack_require__(21);
+	  var $ = __webpack_require__(20);
 
 	  var navigator = __weex_require__('@weex-module/navigator');
 	  var apis = __webpack_require__(16);
@@ -1486,8 +1486,7 @@
 
 /***/ },
 /* 18 */,
-/* 19 */,
-/* 20 */
+/* 19 */
 /***/ function(module, exports) {
 
 	;__weex_define__("@weex-component/guide-slider", [], function(__weex_require__, __weex_exports__, __weex_module__){
@@ -1592,7 +1591,7 @@
 	})
 
 /***/ },
-/* 21 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;;__weex_define__("@weex-component/jquery", [], function(__weex_require__, __weex_exports__, __weex_module__){
