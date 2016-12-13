@@ -1,0 +1,23 @@
+PODS:
+  - ATSDK-Weex (0.0.1)
+  - SocketRocket (0.4.2)
+  - WeexSDK (0.6.0):
+    - SocketRocket
+
+DEPENDENCIES:
+  - ATSDK-Weex (= 0.0.1)
+  - SocketRocket (= 0.4.2)
+  - WeexSDK (from `./sdk/`)
+
+EXTERNAL SOURCES:
+  WeexSDK:
+    :path: ./sdk/
+
+SPEC CHECKSUMS:
+  ATSDK-Weex: 1b27558f4336d77fb97704d34fc6ad1fd468592c
+  SocketRocket: ffe08119b00ef982f6c37052a4705a057c8494ad
+  WeexSDK: 3ce441ea90c93462f1f8e7744cb0b63081744de9
+
+PODFILE CHECKSUM: 7167005579c651316239188e03bb10bb8e3f8615
+
+COCOAPODS: 1.1.1
