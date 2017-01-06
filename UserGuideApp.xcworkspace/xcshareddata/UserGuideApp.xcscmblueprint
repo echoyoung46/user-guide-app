@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "9E590F883F505E7B4CEBDE5804A7E1143A75FCD3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "9E590F883F505E7B4CEBDE5804A7E1143A75FCD3" : 0,
+    "B69E8DDD398BF0860B647E2B48C82291C09E6EC5" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "21443694-88C5-412C-B4A0-9FA12BC8E5B0",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "9E590F883F505E7B4CEBDE5804A7E1143A75FCD3" : "user-guide-app\/",
+    "B69E8DDD398BF0860B647E2B48C82291C09E6EC5" : "..\/..\/study\/weex\/weex"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "UserGuideApp",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "UserGuideApp.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/echoyoung46\/user-guide-app.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9E590F883F505E7B4CEBDE5804A7E1143A75FCD3"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/alibaba\/weex.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B69E8DDD398BF0860B647E2B48C82291C09E6EC5"
+    }
+  ]
+}

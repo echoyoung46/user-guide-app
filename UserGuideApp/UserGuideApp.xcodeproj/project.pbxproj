@@ -13,7 +13,7 @@
 		680048E71DFFB6DF007046EA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 680048E51DFFB6DF007046EA /* Main.storyboard */; };
 		680048E91DFFB6DF007046EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 680048E81DFFB6DF007046EA /* Assets.xcassets */; };
 		680048EC1DFFB6DF007046EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 680048EA1DFFB6DF007046EA /* LaunchScreen.storyboard */; };
-		683DC8441DFFE9B700ECE141 /* WeexSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 683DC8431DFFE9B700ECE141 /* WeexSDK.framework */; };
+		68926D761E1CE5D00096CEC9 /* WeexSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68926D751E1CE5D00096CEC9 /* WeexSDK.framework */; };
 		BEE83F8286A9CFB10579CEBC /* libPods-UserGuideApp.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AA5A08571B1EDC91285B4C32 /* libPods-UserGuideApp.a */; };
 /* End PBXBuildFile section */
 
@@ -31,6 +31,7 @@
 		680048EB1DFFB6DF007046EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		680048ED1DFFB6DF007046EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		683DC8431DFFE9B700ECE141 /* WeexSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WeexSDK.framework; path = ../../../../study/weex/WeexSample/lib/WeexSDK.framework; sourceTree = "<group>"; };
+		68926D751E1CE5D00096CEC9 /* WeexSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WeexSDK.framework; path = ../../../../study/weex/weex/ios/sdk/Products/WeexSDK.framework; sourceTree = "<group>"; };
 		AA5A08571B1EDC91285B4C32 /* libPods-UserGuideApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-UserGuideApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -39,7 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				683DC8441DFFE9B700ECE141 /* WeexSDK.framework in Frameworks */,
+				68926D761E1CE5D00096CEC9 /* WeexSDK.framework in Frameworks */,
 				BEE83F8286A9CFB10579CEBC /* libPods-UserGuideApp.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,6 +102,7 @@
 		E8D3F3968B9023DACFCB8414 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				68926D751E1CE5D00096CEC9 /* WeexSDK.framework */,
 				683DC8431DFFE9B700ECE141 /* WeexSDK.framework */,
 				AA5A08571B1EDC91285B4C32 /* libPods-UserGuideApp.a */,
 			);
